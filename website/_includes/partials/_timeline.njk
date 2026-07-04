@@ -1,0 +1,22 @@
+<div class="mg-timeline" aria-label="MonoGame history timeline">
+    {% for year in timeline %}
+        <article class="mg-timeline-row">
+            <div class="mg-timeline-year-wrap">
+                <div class="mg-timeline-year">{{ year.year }}</div>
+            </div>
+
+            <div class="mg-timeline-panel">
+                {% for event in year.events %}
+                    <section class="mg-timeline-event">
+                        {% if event.date %}
+                            <p class="mg-timeline-date">{{ event.date }}</p>
+                        {% endif %}
+                        <div class="mg-timeline-copy">
+                            {{ event.description | safe }}
+                        </div>
+                    </section>
+                {% endfor %}
+            </div>
+        </article>
+    {% endfor %}
+</div>

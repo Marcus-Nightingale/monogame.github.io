@@ -3,8 +3,7 @@
         "year": "2004",
         "events": [
             {
-                "date": "March 24th",
-                "description": "The XNA toolset is first announced at the 2004 Game Developers Conference in San Jose, California."
+                "description": "Microsoft announces XNA at Game Developers Conference in San Jose, California, introducing the idea of a C#-friendly game development stack for Windows and Xbox."
             }
         ]
     },
@@ -12,12 +11,7 @@
         "year": "2006",
         "events": [
             {
-                "date": "March 14th",
-                "description": "The first 'Community Technology Preview' of XNA Build released."
-            },
-            {
-                "date": "August 30th",
-                "description": "XNA Game Studio Express is released."
+                "description": "XNA Game Studio Express opens the door for hobbyists, students, and independent developers to build games using C# and familiar .NET tooling."
             }
         ]
     },
@@ -25,21 +19,7 @@
         "year": "2007",
         "events": [
             {
-                "date": "February 11th",
-                "description": "<a href=\"https://code.google.com/archive/p/monoxna/\">Mono.XNA</a> development begins."
-            },
-            {
-                "date": "December 13th",
-                "description": "XNA Game Studio 2.0 is released."
-            }
-        ]
-    },
-    {
-        "year": "2008",
-        "events": [
-            {
-                "date": "October 30th",
-                "description": "XNA Game Studio 3.0 is released."
+                "description": "Early open source efforts such as <a href=\"https://code.google.com/archive/p/monoxna/\">Mono.XNA</a> begin exploring how the XNA model could work outside Microsoft’s own stack."
             }
         ]
     },
@@ -47,12 +27,7 @@
         "year": "2009",
         "events": [
             {
-                "date": "March",
-                "description": "Bill Reiss's <a href=\"https://web.archive.org/web/20090317075046/http://silversprite.codeplex.com:80/\">SilverSprite</a> is released."
-            },
-            {
-                "date": "December 2nd",
-                "description": "<a href=\"https://web.archive.org/web/20140225023450/https://monogame.codeplex.com/releases/view/36738\">XNA Touch</a> (with bits of SilverSprite and Mono.XNA) is released by <a href=\"https://github.com/jalf\">José Antonio Leal de Farias</a>."
+                "description": "SilverSprite and XNA Touch push XNA-style development toward Silverlight, iPhone, and broader cross-platform use — important stepping stones toward <span class=\"mg-history-brand\">MonoGame</span>."
             }
         ]
     },
@@ -60,11 +35,7 @@
         "year": "2010",
         "events": [
             {
-                "description": "Several iPhone games appeared on the Apple App Store using XNA Touch."
-            },
-            {
-                "date": "September 16th",
-                "description": "XNA Game Studio 4.0 is released."
+                "description": "XNA Touch is used by several iPhone games, while XNA Game Studio 4.0 becomes Microsoft’s final major XNA release."
             }
         ]
     },
@@ -72,21 +43,7 @@
         "year": "2011",
         "events": [
             {
-                "description": "XNA Touch is renamed MonoGame and is moved to GitHub."
-            },
-            {
-                "description": "Support is added for Android, Mac, Linux, and OpenGL on Windows."
-            },
-            {
-                "description": "Dominique Louis takes over as the full-time project lead."
-            },
-            {
-                "date": "October 6th",
-                "description": "XNA Game Studio 4.0 Refresh is released."
-            },
-            {
-                "date": "October 28th",
-                "description": "MonoGame 2.0 is released."
+                "description": "XNA Touch becomes <span class=\"mg-history-brand\">MonoGame</span>, moves to GitHub, and expands support across Android, macOS, Linux, and OpenGL on Windows."
             }
         ]
     },
@@ -94,14 +51,7 @@
         "year": "2012",
         "events": [
             {
-                "description": "Support is added for DirectX 11, Windows 8, and Windows Phone 8."
-            },
-            {
-                "description": "The <a href=\"https://web.archive.org/web/20130112005358/http://www.monogame.net/\">first MonoGame website</a> goes up."
-            },
-            {
-                "date": "October 30th",
-                "description": "The MonoGame team was invited to speak at Microsoft’s //Build 2012 event."
+                "description": "<span class=\"mg-history-brand\">MonoGame</span> adds DirectX 11, Windows 8, and Windows Phone 8 support, launches its first website, and is presented at Microsoft’s //Build event."
             }
         ]
     },
@@ -109,18 +59,7 @@
         "year": "2013",
         "events": [
             {
-                "description": "Microsoft XNA development ends."
-            },
-            {
-                "description": "Microsoft Studios publishes several titles using MonoGame on Windows 8 and Windows Phone 8."
-            },
-            {
-                "date": "January 6th",
-                "description": "OUYA console support is added to MonoGame."
-            },
-            {
-                "date": "January 21st",
-                "description": "MonoGame 3.0 is released."
+                "description": "Microsoft ends active XNA development. <span class=\"mg-history-brand\">MonoGame</span> 3.0 gives XNA developers a practical open source path forward."
             }
         ]
     },
@@ -128,18 +67,7 @@
         "year": "2014",
         "events": [
             {
-                "description": "First MonoGame titles released on PlayStation 4 including <a href=\"http://www.towerfall-game.com/\">TowerFall Ascension</a>, <a href=\"https://www.supergiantgames.com/games/transistor\">Transistor</a>, and <a href=\"http://mercenarykings.com/\">Mercenary Kings</a>."
-            },
-            {
-                "description": "<a href=\"https://github.com/tomspilman\">Tom Spilman</a> and <a href=\"http://community.monogame.net/users/KonajuGames/activity\">Steve Williams</a> take stewardship of the project."
-            },
-            {
-                "date": "April 7th",
-                "description": "MonoGame 3.2 is released."
-            },
-            {
-                "date": "May 5th",
-                "description": "First release of MonoGame for PlayStation 4 is made available to all Sony developers."
+                "description": "<span class=\"mg-history-brand\">MonoGame</span> reaches PlayStation 4 and helps ship recognised games including <a href=\"http://www.towerfall-game.com/\">TowerFall Ascension</a>, <a href=\"https://www.supergiantgames.com/games/transistor\">Transistor</a>, and <a href=\"http://mercenarykings.com/\">Mercenary Kings</a>."
             }
         ]
     },
@@ -147,8 +75,7 @@
         "year": "2015",
         "events": [
             {
-                "date": "April 15th",
-                "description": "MonoGame 3.4 is released."
+                "description": "The 3.4 release continues the project’s shift from XNA compatibility layer to stable, production-used framework."
             }
         ]
     },
@@ -156,12 +83,7 @@
         "year": "2016",
         "events": [
             {
-                "date": "March 16th",
-                "description": "MonoGame 3.5.1 is released."
-            },
-            {
-                "date": "July 21st",
-                "description": "First release of MonoGame for PlayStation Vita is made available to all Sony developers."
+                "description": "The 3.5.1 release improves the framework and brings PlayStation Vita support to approved Sony developers."
             }
         ]
     },
@@ -169,12 +91,7 @@
         "year": "2017",
         "events": [
             {
-                "date": "March 16th",
-                "description": "MonoGame 3.6 is released."
-            },
-            {
-                "date": "July 12th",
-                "description": "First release of MonoGame for Nintendo Switch is made available to all Nintendo developers."
+                "description": "The 3.6 release arrives, and Nintendo Switch support becomes available to approved Nintendo developers."
             }
         ]
     },
@@ -182,8 +99,7 @@
         "year": "2018",
         "events": [
             {
-                "date": "September 23rd",
-                "description": "MonoGame 3.7 is released."
+                "description": "The 3.7 release continues the project’s long-running focus on portability, compatibility, and keeping existing games maintainable."
             }
         ]
     },
@@ -191,8 +107,7 @@
         "year": "2020",
         "events": [
             {
-                "date": "August 10th",
-                "description": "MonoGame 3.8 is released."
+                "description": "<span class=\"mg-history-brand\">MonoGame</span> 3.8 is released with major updates from the developer community and a clearer path for modern projects."
             }
         ]
     },
@@ -200,11 +115,7 @@
         "year": "2022",
         "events": [
             {
-                "date": "July 25th",
-                "description": "First release of MonoGame for PlayStation 5 is made available to all Sony developers."
-            },
-            {
-                "description": "MonoGame 3.8.1 is released."
+                "description": "The 3.8.1 release lands, and PlayStation 5 support becomes available to approved Sony developers."
             }
         ]
     },
@@ -212,8 +123,7 @@
         "year": "2023",
         "events": [
             {
-                "date": "September 29th",
-                "description": "The MonoGame Foundation is formed."
+                "description": "The <span class=\"mg-history-brand\">MonoGame</span> Foundation is formed to give the project a more sustainable structure for governance, funding, and long-term development."
             }
         ]
     },
@@ -221,8 +131,7 @@
         "year": "2024",
         "events": [
             {
-                "date": "August 16th",
-                "description": "MonoGame 3.8.2 is released."
+                "description": "The Foundation receives official 501(c)(3) non-profit status, retroactive to September 2023, and releases <span class=\"mg-history-brand\">MonoGame</span> 3.8.2."
             }
         ]
     },
@@ -230,12 +139,15 @@
         "year": "2025",
         "events": [
             {
-                "date": "April 5th",
-                "description": "MonoGame 3.8.3 is released."
-            },
+                "description": "The Foundation continues shipping more regularly, including <span class=\"mg-history-brand\">MonoGame</span> 3.8.4 and follow-up maintenance work for modern platform requirements."
+            }
+        ]
+    },
+    {
+        "year": "2026",
+        "events": [
             {
-                "date": "June 2nd",
-                "description": "MonoGame 3.8.4 is released."
+                "description": "Preview releases for 3.8.5 continue the modernisation work, including new project templates and additional graphics targets."
             }
         ]
     }

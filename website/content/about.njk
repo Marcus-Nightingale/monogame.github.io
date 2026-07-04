@@ -4,182 +4,164 @@ title: About
 {% extends "layouts/base.layout.njk" %}
 
 {% block content %}
-    <section class="container-xxl my-5">
-        <h1 id="foundation" class="fw-bold"><a href="#foundation">Foundation</a></h1>
-        <p>
-            The <span class="fw-bold">MonoGame Foundation</span> is a US based 501(c)(3) non-profit organization established in September of 2023
-            to direct the future of the framework and promote game development education.
-        </p>
-        <p>
-	    Our funding comes from individual and corporate <a href="/donate">donations</a> and is used to drive improvements to the framework code, creation of educational resources, supporting community events, and general project infrastructure.
-        </p>
-        <p>
-	     Current members of the board are:
-        </p>
-        <div class="row">
-            {% for member in foundation %}
-                {% if member.current %}
-                    <div class="col-lg-4">
-                        <div class="card mb-3">
-                            <div class="card-body mg-box-shadow">
-                                <span class="float-start m-2 me-4">
-                                    <img src="https://avatars.githubusercontent.com/{{ member.github }}"
-                                        class="rounded-circle img-thumbnail" style="height: 100px;">
-                                </span>
-                                <div>
-                                    <h4 class="mt-1 mb-1">{{ member.name }}</h4>
-                                    <p class="font-13">{{ member.title }}</p>
-                                    <a target="_blank" href="https://github.com/{{ member.github }}">GitHub Profile</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
+    <section class="mg-about-hero" aria-labelledby="about-foundation-hero-title">
+        <div class="container-xxl mg-about-hero-inner">
+            <div class="mg-about-hero-copy">
+                <nav class="mg-about-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <span>About</span>
+                </nav>
+                <h1 id="about-foundation-hero-title">Protecting the future of <span class="mg-about-hero-brand">MonoGame</span>.</h1>
+                <p class="mg-about-hero-lede">
+                    The MonoGame Foundation is a US 501(c)(3) non-profit created to support the framework, fund development, publish governance, and keep MonoGame open for everyone.
+                </p>
+                <div class="mg-about-hero-actions">
+                    <a href="/donate/" class="mg-about-hero-primary">
+                        <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                        <span>Support the Foundation</span>
+                    </a>
+                    <a href="https://docs.monogame.net/foundation/" class="mg-about-hero-secondary hide-external-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                        <span>Read the bylaws</span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <p class="mt-5">
-	     Former members of the board were:
-        </p>
-        <div class="row">
-            {% for member in foundation %}
-                {% if not member.current %}
-                    <div class="col-lg-4">
-                        <div class="card mb-3">
-                            <div class="card-body mg-box-shadow">
-                                <span class="float-start m-2 me-4">
-                                    <img src="https://avatars.githubusercontent.com/{{ member.github }}"
-                                        class="rounded-circle img-thumbnail" style="height: 100px;">
-                                </span>
-                                <div>
-                                    <h4 class="mt-1 mb-1">{{ member.name }}</h4>
-                                    <p class="font-13">{{ member.title }}</p>
-                                    <a target="_blank" href="https://github.com/{{ member.github }}">GitHub Profile</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <p>
-            Our IRS Tax ID Number (TIN) is 93-3803929.
-        </p>
     </section>
 
-    <section class="container-xxl mb-5">
-        <div class="row">
-            <h3 class="fw-semibold mb-4 text-body-emphasis">Learn more about the Foundation</h3>
+    <section class="container-xxl my-5 mg-foundation-overview" aria-labelledby="foundation-overview-title">
+        <div class="mg-foundation-intro">
+            <p class="mg-foundation-kicker">Foundation overview</p>
+            <h2 id="foundation-overview-title">A non-profit home for MonoGame’s future.</h2>
             <p>
-                The Foundation was setup to help accelerate and manage the future of MonoGame, with the intention of keeping all decisions, notes public for full transparency.
+                The MonoGame Foundation exists to keep MonoGame open, sustainable, and community-led. Donations help fund framework development, educational resources, community events, project infrastructure, and transparent governance.
             </p>
-            <div class="col-12 col-lg-4 mb-5">
-                <div class="mg-card mg-box-shadow h-100">
-                    <a target="_self"
-                    href="/blog"
-                    class="mg-no-link hide-external-icon">
-                        <div class="mg-card-body d-flex flex-column h-100">
-                            <div class="mg-card-title"><i class="bi bi-substack"></i> Foundation Blog</div>
-                            <p>
-                                The MonoGame Framework is completely free and open-source.  All source code is
-                                available to you.  You can view the source code on GitHub, clone it and/or create
-                                a fork.
-                            </p>
-                            <p class="mt-auto">Click to view blog</p>
-                        </div>
-                    </a>
-                </div>
+        </div>
+
+        <div class="mg-foundation-pillars" aria-label="Foundation focus areas">
+            <article class="mg-foundation-pillar">
+                <i class="bi bi-code-slash" aria-hidden="true"></i>
+                <h3>Framework development</h3>
+                <p>Funding and coordination for improvements to MonoGame’s codebase, tooling, platform support, and long-term maintenance.</p>
+            </article>
+            <article class="mg-foundation-pillar">
+                <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                <h3>Education</h3>
+                <p>Resources that help new and experienced developers learn MonoGame, C#, and practical game development workflows.</p>
+            </article>
+            <article class="mg-foundation-pillar">
+                <i class="bi bi-people" aria-hidden="true"></i>
+                <h3>Community</h3>
+                <p>Support for community events, contributors, communication channels, and the infrastructure the project depends on.</p>
+            </article>
+            <article class="mg-foundation-pillar">
+                <i class="bi bi-journal-check" aria-hidden="true"></i>
+                <h3>Governance</h3>
+                <p>Public decision-making, published meeting notes, and clear oversight for the Foundation’s work and funding.</p>
+            </article>
+        </div>
+
+        <div class="mg-board-section" aria-labelledby="current-board-title">
+            <div class="mg-board-heading">
+                <p class="mg-foundation-kicker">Current board</p>
+                <h3 id="current-board-title">Stewarding the Foundation today.</h3>
             </div>
-            <div class="col-12 col-lg-4 mb-5">
-                <div class="mg-card mg-box-shadow h-100">
-                    <a target="_self"
-                        href="/blog/meeting"
-                        class="mg-no-link hide-external-icon">
-                        <div class="mg-card-body d-flex flex-column h-100">
-                            <div class="mg-card-title"><i class="bi bi-journal-text"></i> Board Meeting Minutes</div>
-                            <p class="card-text">
-                                The MonoGame Foundation operates in the clear, all records of our monthly meetings are recorded here.
-                            </p>
-                            <p class="mt-auto">Click to view minutes</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-5">
-                <div class="mg-card mg-box-shadow h-100">
-                    <a target="_self"
-                        href="https://docs.monogame.net/roadmap/"
-                        class="mg-no-link hide-external-icon">
-                        <div class="mg-card-body d-flex flex-column h-100">
-                            <div class="mg-card-title"><i class="bi bi-signpost-split-fill"></i> Roadmap</div>
-                            <p>
-                                The MonoGame Roadmap is published on our documentation site, detailing future plans and bounties.
-                            </p>
-                            <p class="mt-auto">Click to see MonoGame's future</p>
-                        </div>
-                    </a>
-                </div>
+            <div class="mg-board-grid">
+                {% for member in foundation %}
+                    {% if member.current %}
+                        <article class="mg-board-card">
+                            <img src="https://avatars.githubusercontent.com/{{ member.github }}" alt="{{ member.name }}" class="mg-board-avatar" loading="lazy">
+                            <div class="mg-board-card-body">
+                                <h4>{{ member.name }}</h4>
+                                <p>{{ member.title }}</p>
+                                <a class="hide-external-icon" target="_blank" rel="noopener noreferrer" href="https://github.com/{{ member.github }}">
+                                    <i class="bi bi-github" aria-hidden="true"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </article>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
-    </section>    
 
-    <section class="container-xxl mb-5">
-        <h1 id="history" class="fw-bold"><a href="#history">History</a></h1>
-        <p>
-            Explore how <span class="fw-bold">MonoGame</span> has grown and shaped game development over time.
-        </p>
-        <div class="timeline">
-            {% for year in timeline %}
-                <div class="row">
-                    <div class="col-auto">
-                        <div class="timeline-year">
-                            {{ year.year }}
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="timeline-event-bar">
-                            <i class="bi bi-circle-fill"></i>
-                            <span class="timeline-bar"></span>
-                        </div>
-                    </div>
-                    <div class="col timeline-events mb-5">
-                        {% for event in year.events %}
-                            <div class="timeline-event">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <h6 class="timeline-event-date">{{ event.date }}</h6>
-                                        <p> {{ event.description | safe }}</p>
-                                    </div>
-                                </div>
+        <div class="mg-board-section mg-board-section--former" aria-labelledby="former-board-title">
+            <div class="mg-board-heading">
+                <p class="mg-foundation-kicker">Former board</p>
+                <h3 id="former-board-title">Previous Foundation members.</h3>
+            </div>
+            <div class="mg-board-grid mg-board-grid--compact">
+                {% for member in foundation %}
+                    {% if not member.current %}
+                        <article class="mg-board-card">
+                            <img src="https://avatars.githubusercontent.com/{{ member.github }}" alt="{{ member.name }}" class="mg-board-avatar" loading="lazy">
+                            <div class="mg-board-card-body">
+                                <h4>{{ member.name }}</h4>
+                                <p>{{ member.title }}</p>
+                                <a class="hide-external-icon" target="_blank" rel="noopener noreferrer" href="https://github.com/{{ member.github }}">
+                                    <i class="bi bi-github" aria-hidden="true"></i>
+                                    <span>GitHub</span>
+                                </a>
                             </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endfor %}
+                        </article>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <aside class="mg-foundation-note">
+            <strong>IRS Tax ID Number:</strong> 93-3803929
+        </aside>
+    </section>
+
+    <section class="container-xxl mb-5 mg-foundation-links" aria-labelledby="foundation-links-title">
+        <div class="mg-foundation-links-header">
+            <p class="mg-foundation-kicker">Transparency</p>
+            <h2 id="foundation-links-title">Learn more about the Foundation.</h2>
+            <p>
+                Follow Foundation updates, read board meeting notes, and see the roadmap that guides MonoGame’s future work.
+            </p>
+        </div>
+
+        <div class="mg-foundation-link-grid">
+            <a href="/blog" class="mg-foundation-link-card hide-external-icon">
+                <i class="bi bi-substack" aria-hidden="true"></i>
+                <strong>Foundation Blog</strong>
+                <span>Updates from the Foundation, project announcements, and community news.</span>
+                <em>Read updates <span aria-hidden="true">→</span></em>
+            </a>
+
+            <a href="/blog/meeting" class="mg-foundation-link-card hide-external-icon">
+                <i class="bi bi-journal-text" aria-hidden="true"></i>
+                <strong>Board Meeting Minutes</strong>
+                <span>Public records from Foundation meetings, decisions, and governance discussions.</span>
+                <em>View minutes <span aria-hidden="true">→</span></em>
+            </a>
+
+            <a href="https://docs.monogame.net/roadmap/" class="mg-foundation-link-card hide-external-icon">
+                <i class="bi bi-signpost-split-fill" aria-hidden="true"></i>
+                <strong>Roadmap</strong>
+                <span>Planned framework work, platform priorities, and bounties published on the documentation site.</span>
+                <em>See the roadmap <span aria-hidden="true">→</span></em>
+            </a>
         </div>
     </section>
 
-    <section class="container-xxl mb-5">
-        <h1 id="contact-us" class="fw-bold"><a href="#contact-us">Contact Us</a></h1>
-        <p class="mb-5">
-            Feel free to contact us with business, press, and/or administrative inquiries below. <br/>
-            Support requests should always go to the <a href="https://community.monogame.net/">community site</a> or the
-            <a href="https://github.com/MonoGame/MonoGame/issues">development issue tracker</a>.
-        </p>
-        <div class="row">
-            <div class="col-lg-4 mb-5">
-                <h5 id="business" class="fw-bold"><a href="#business">Business</a></h5>
-                <a href="mailto:biz@monogame.net">biz@monogame.net</a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h5 id="press" class="fw-bold"><a href="#press">Press</a></h5>
-                <a href="mailto:press@monogame.net">press@monogame.net</a>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <h5 id="administrator" class="fw-bold"><a href="#administrator">Administrator</a></h5>
-                <a href="mailto:admin@monogame.net">admin@monogame.net</a>
-            </div>
-
+    <section class="mg-about-timeline-section container-xxl mb-5" aria-labelledby="history">
+        <div class="mg-about-timeline-header">
+            <p class="mg-about-timeline-eyebrow">History</p>
+            <h1 id="history" class="mg-about-timeline-title">From XNA roots to an open source foundation.</h1>
+            <p class="mg-about-timeline-lede">
+                A condensed timeline of how <span class="mg-history-brand">MonoGame</span> moved from XNA’s legacy into a cross-platform framework, a production-proven toolkit, and now a community-backed foundation.
+            </p>
         </div>
+
+        {% include "partials/_timeline.njk" %}
+    </section>
+
+    <section class="container-xxl mb-5" id="contact-us">
+        {% include "partials/_contact_us_card.njk" %}
     </section>
 {% endblock %}
 
