@@ -1,32 +1,35 @@
-<div class="dropdown bd-mode-toggle">
+<div class="dropdown bd-mode-toggle mg-theme-toggle">
     <button
-        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+        class="btn mg-theme-toggle-button dropdown-toggle d-flex align-items-center justify-content-center"
         id="bd-theme"
         type="button"
         aria-expanded="false"
         data-bs-toggle="dropdown"
-        aria-label="Toggle theme (auto)">
-        <i id="active-theme-icon" class="bi bi-circle-half"></i>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        aria-label="Toggle colour theme">
+        <i id="active-theme-icon" class="bi bi-circle-half" aria-hidden="true"></i>
+        <span class="visually-hidden" id="bd-theme-text">Toggle colour theme</span>
     </button>
-    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+    <ul class="dropdown-menu dropdown-menu-end mg-theme-menu shadow" aria-labelledby="bd-theme-text">
         <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                <i class="bi bi-sun"></i>&nbsp;Light
+            <button type="button" class="dropdown-item d-flex align-items-center gap-2" data-bs-theme-value="light" aria-pressed="false">
+                <i class="bi bi-sun" aria-hidden="true"></i>
+                <span>Light</span>
             </button>
         </li>
         <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                <i class="bi bi-moon"></i>&nbsp;Dark
+            <button type="button" class="dropdown-item d-flex align-items-center gap-2" data-bs-theme-value="dark" aria-pressed="false">
+                <i class="bi bi-moon" aria-hidden="true"></i>
+                <span>Dark</span>
             </button>
         </li>
         <li>
             <button
                 type="button"
-                class="dropdown-item d-flex align-items-center active"
+                class="dropdown-item d-flex align-items-center gap-2 active"
                 data-bs-theme-value="auto"
                 aria-pressed="true">
-                <i class="bi bi-circle-half"></i>&nbsp;Auto
+                <i class="bi bi-circle-half" aria-hidden="true"></i>
+                <span>Auto</span>
             </button>
         </li>
     </ul>

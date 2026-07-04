@@ -1,38 +1,91 @@
-<nav class="navbar navbar-expand-lg bg-body shadow sticky-md-top" aria-label="Navigation Bar">
-    <div class="container-xl">
-        <a class="navbar-brand" href="/" title="Return to Home">
-            <img class="mg-logo svg" style="height: 36px; display: inline-block;" alt="MonoGame Logo">
+<nav class="navbar navbar-expand-lg sticky-top mg-topnav" aria-label="Primary navigation">
+    <div class="container-xl mg-topnav-container">
+        <a class="navbar-brand mg-navbar-brand" href="/" title="Return to Home" aria-label="MonoGame home">
+            <img class="mg-logo svg" alt="MonoGame Logo">
         </a>
-        <button
-            class="btn btn-lg d-lg-none"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#topNavBar"
-            aria-controls="topNavBar"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="topNavBar">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {% for navlink in site.navigation %}
-                    <li class="nav-item">
-                        {% if navlink.type != "button" %}
-                        <a class="hide-external-icon nav-link {{ 'active' if page.url === navlink.url }}" href="{{ navlink.url }}">
-                            {{ navlink.label }}
-                        </a>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
+
+        <div class="mg-navbar-actions d-flex align-items-center gap-2 order-lg-3">
+            <a
+                class="btn mg-nav-icon-button d-none d-md-inline-flex align-items-center justify-content-center hide-external-icon"
+                href="https://github.com/MonoGame/MonoGame"
+                aria-label="View MonoGame on GitHub"
+                title="View MonoGame on GitHub">
+                <i class="bi bi-github" aria-hidden="true"></i>
+            </a>
+
+            <a
+                class="btn mg-nav-icon-button d-none d-md-inline-flex align-items-center justify-content-center hide-external-icon"
+                href="https://discord.gg/monogame"
+                aria-label="Join the MonoGame Discord"
+                title="Join the MonoGame Discord">
+                <i class="bi bi-discord" aria-hidden="true"></i>
+            </a>
+
+            {% include 'partials/_themeToggle.njk' %}
+
             {% for navlink in site.navigation %}
                 {% if navlink.type == "button" %}
-                    <a class="btn mg-patreon-button px-4" type="button" href="{{ navlink.url }}">
-                        <i class="bi bi-heart"></i> {{ navlink.label }}
+                    <a class="btn mg-nav-cta mg-nav-donate hide-external-icon d-none d-lg-inline-flex" href="{{ navlink.url }}">
+                        <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                        <span>{{ navlink.label }}</span>
                     </a>
                 {% endif %}
             {% endfor %}
-            {% include 'partials/_themeToggle.njk' %}
+
+            <button
+                class="btn mg-nav-menu-button d-lg-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#topNavBar"
+                aria-controls="topNavBar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse mg-navbar-collapse order-lg-2" id="topNavBar">
+            <ul class="navbar-nav mg-navbar-nav mx-lg-auto mb-3 mb-lg-0">
+                {% for navlink in site.navigation %}
+                    {% if navlink.type != "button" %}
+                        <li class="nav-item">
+                            <a class="hide-external-icon nav-link mg-nav-link {{ 'active' if page.url === navlink.url }}" href="{{ navlink.url }}" {{ 'aria-current="page"' if page.url === navlink.url }}>
+                                <span>{{ navlink.label }}</span>
+                                {% if navlink.label == "Foundation" %}
+                                    <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <div class="mg-navbar-mobile-actions d-flex d-lg-none align-items-center gap-2 pt-2">
+                <a
+                    class="btn mg-nav-icon-button d-inline-flex align-items-center justify-content-center hide-external-icon"
+                    href="https://github.com/MonoGame/MonoGame"
+                    aria-label="View MonoGame on GitHub"
+                    title="View MonoGame on GitHub">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                </a>
+
+                <a
+                    class="btn mg-nav-icon-button d-inline-flex align-items-center justify-content-center hide-external-icon"
+                    href="https://discord.gg/monogame"
+                    aria-label="Join the MonoGame Discord"
+                    title="Join the MonoGame Discord">
+                    <i class="bi bi-discord" aria-hidden="true"></i>
+                </a>
+
+                {% for navlink in site.navigation %}
+                    {% if navlink.type == "button" %}
+                        <a class="btn mg-nav-cta mg-nav-donate hide-external-icon flex-grow-1" href="{{ navlink.url }}">
+                            <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                            <span>{{ navlink.label }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </nav>

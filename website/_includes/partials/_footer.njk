@@ -1,82 +1,68 @@
-<section class="container-xxl">
-    <footer class="border-top my-5 pt-5">
-        <div class="row justify-content-between">
-            <div class="col-6 col-lg-3 mb-3">
-                <h5>MonoGame</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="https://docs.monogame.net/articles/" class="p-0 hide-external-icon">Documentation</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="https://docs.monogame.net/api/" class="p-0 hide-external-icon">API Reference</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="/showcase/" class="p-0">Showcase</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="/about/" class="p-0">About</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="https://docs.monogame.net/foundation/" class="p-0 hide-external-icon">Foundation Bylaws</a>
-                    </li>
-                </ul>
+<footer class="mg-footer">
+    <div class="container-xl">
+        <div class="mg-footer-grid">
+            <div class="mg-footer-brand">
+                <a class="mg-footer-logo-link" href="/" aria-label="MonoGame home">
+                    <img class="mg-logo svg mg-footer-logo mg-footer-logo--white" alt="MonoGame Logo">
+                </a>
+                <p class="mg-footer-copyright">
+                    © 2009-2026 MonoGame Foundation, Inc.<br>
+                    A 501(c)(3) non-profit. EIN 93-3803929.
+                </p>
+                <p class="mg-footer-credit">
+                    Designed with
+                    <span class="mg-footer-credit-heart" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                            <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.69001C2 5.60001 4.49 3.10001 7.56 3.10001C9.38 3.10001 10.99 3.98001 12 5.34001C13.01 3.98001 14.63 3.10001 16.44 3.10001C19.51 3.10001 22 5.60001 22 8.69001C22 15.69 15.52 19.82 12.62 20.81Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    by
+                    <a class="hide-external-icon" href="https://github.com/MonoGame/monogame.github.io/graphs/contributors">MonoGame Community</a>
+                </p>
             </div>
-            <div class="col-6 col-lg-3 mb-3">
-                <h5>Get Involved</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="https://github.com/MonoGame/MonoGame" class="p-0">Source Code</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a
-                            href="https://docs.monogame.net/articles/contributing"
-                            class="p-0 hide-external-icon">Contributing Documentation</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="https://github.com/MonoGame/MonoGame/issues/new/choose" class="p-0">Report
-                            Issues</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="/bounties/" class="p-0">Bounties</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="https://store.monogame.net" class="p-0">Store</a>
-                    </li>                    
-                </ul>
-            </div>
-            <div class="col-6 col-lg-3 mb-3">
-                <h5>Public Relations</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="/blog/" class="p-0">Blog</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="https://community.monogame.net" class="p-0 hide-external-icon">Community</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="/presskit/" class="p-0">Press Kit</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-6 col-lg-3 mb-3">
-                <h3 class="fw-bold"><a href="/about/#contact-us">Contact Us</a></h1>
-            </div>
-        </div>
 
-        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 py-4 my-4">
-            <div>
-                © 2009-2026 MonoGame Foundation, Inc. is a 501(c)(3) non-profit. EIN 93-3803929<br/>Designed with
-                <span class="text-danger">❤</span>
-                by
-                <a href="https://github.com/MonoGame/monogame.github.io/graphs/contributors">MonoGame Community</a>
-            </div>
-            <div class="d-flex justify-content-between gap-3">
-                {% for social in site.social %}
-                    <a class="mg-social-link hide-external-icon" href="{{ social.url }}" title="{{ social.title }}">
-                        <i class="bi {{ social.icon }}"></i>
-                    </a>
-                {% endfor %}
+            <nav class="mg-footer-nav" aria-label="Footer MonoGame links">
+                <h2>MonoGame</h2>
+                <ul>
+                    <li><a class="hide-external-icon" href="https://docs.monogame.net/articles/">Documentation</a></li>
+                    <li><a class="hide-external-icon" href="https://docs.monogame.net/api/">API Reference</a></li>
+                    <li><a href="/showcase/">Showcase</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a class="hide-external-icon" href="https://docs.monogame.net/foundation/">Foundation Bylaws</a></li>
+                </ul>
+            </nav>
+
+            <nav class="mg-footer-nav" aria-label="Footer get involved links">
+                <h2>Get Involved</h2>
+                <ul>
+                    <li><a class="hide-external-icon" href="https://github.com/MonoGame/MonoGame">Source Code</a></li>
+                    <li><a class="hide-external-icon" href="https://docs.monogame.net/articles/contributing">Contributing Documentation</a></li>
+                    <li><a class="hide-external-icon" href="https://github.com/MonoGame/MonoGame/issues/new/choose">Report Issues</a></li>
+                    <li><a href="/bounties/">Bounties</a></li>
+                    <li><a class="hide-external-icon" href="https://store.monogame.net">Store</a></li>
+                </ul>
+            </nav>
+
+            <nav class="mg-footer-nav" aria-label="Footer public relations links">
+                <h2>Public Relations</h2>
+                <ul>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a class="hide-external-icon" href="https://community.monogame.net">Community</a></li>
+                    <li><a href="/presskit/">Press Kit</a></li>
+                    <li><a href="/donate/">Donate</a></li>
+                    <li><a href="/about/#contact-us">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <div class="mg-footer-social-block">
+                <div class="mg-footer-socials">
+                    {% for social in site.social %}
+                        <a class="mg-footer-social-link hide-external-icon" href="{{ social.url }}" title="{{ social.title }}" aria-label="{{ social.title }}">
+                            <i class="bi {{ social.icon }}" aria-hidden="true"></i>
+                        </a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </footer>
-</section>
+    </div>
+</footer>
