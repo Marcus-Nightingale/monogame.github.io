@@ -4,132 +4,207 @@ title: Create
 
 {% extends "layouts/base.layout.njk" %}
 {% block content %}
-    <section class="container-xxl my-5">
-        <h1 id="monogame-create" class="fw-bold">
-            <a href="#monogame-create">Create</a>
-        </h1>
-        <p>
-            Whether you are new to game development or a seasoned coder exploring new territory, MonoGame offers a powerful, flexible framework to bring your ideas to life. This page showcases a hand-picked selection of Starter Kits and demos designed to help you dive right in, experiment with core concepts, and build momentum on your development journey.
-        </p>
+    <section class="mg-create-hero" aria-labelledby="monogame-create">
+        <div class="container-xxl mg-create-hero-inner">
+            <div class="mg-create-hero-copy">
+                <p class="mg-home-feature-kicker">Build with MonoGame</p>
+                <h1 id="monogame-create">Start making something playable, fast.</h1>
+                <p class="mg-create-hero-body">
+                    Whether you are brand new to game development or a seasoned coder exploring new territory,
+                    MonoGame gives you a flexible framework to turn ideas into working games. This page collects
+                    starter kits, demos, and learning paths that help you build momentum quickly.
+                </p>
+                <div class="mg-home-hero-actions mg-create-hero-actions">
+                    <a class="btn btn-lg mg-button mg-home-hero-primary" href="https://docs.monogame.net/articles/tutorials/index.html">
+                        <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                        <span>Explore Tutorials</span>
+                    </a>
+                    <a class="btn btn-lg mg-outline-button mg-home-hero-secondary" href="https://github.com/MonoGame/MonoGame.Samples">
+                        <i class="bi bi-github" aria-hidden="true"></i>
+                        <span>Browse Samples</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="container-xxl my-5">
-        <h1 id="monogame-getstarted" class="fw-bold">
-            Code First Templates
-            <p/><p/>
-        </h1>    
-        <p>
-        MonoGame is fully integrated into Visual Studio, VSCode and other popular editors, including using DotNet direct from the command-line.  These include templates for all of MonoGame's supported platforms.
-        </p>
-        <p>
-        For more details on how to get started through code, checkout our <a href="https://docs.monogame.net/articles/tutorials/index.html">Tutorials Section</a> for a comprehensive list of 2D, 3D Starter guides.
-        </p>
-    </section>    
+    <section class="container-xxl mg-create-section" aria-labelledby="monogame-getstarted">
+        <div class="mg-home-feature-card mg-create-callout">
+            <div class="mg-create-callout-copy">
+                <p class="mg-home-feature-kicker">Code-first setup</p>
+                <h2 id="monogame-getstarted">Templates for your editor of choice</h2>
+                <p>
+                    MonoGame works smoothly with Visual Studio, VS Code, Rider, and direct `dotnet` workflows.
+                    The built-in templates cover MonoGame’s supported platforms so you can go from install to first run
+                    without wrestling your setup.
+                </p>
+                <p>
+                    For a deeper guided path, head to the
+                    <a href="https://docs.monogame.net/articles/tutorials/index.html">Tutorials section</a>
+                    for 2D and 3D starter walkthroughs.
+                </p>
+            </div>
 
-    <section class="container-xxl mb-5">
-        <h1 id="starterkits" class="fw-bold">
-            Starter kits
-            <p/><p/>
-        </h1>
-        <p>
-        Quickly set up your first game project with kits tailored to classic genres like platformers, top-down shooters, and puzzle games. Each kit includes pre-built scenes, input handling, basic physics, and asset loading.
-        <p/>
-        <p>Keep checking back, more Starter Kits coming soon.</p><br/>
-        <div class="mg-item-grid">
-            <a href="https://github.com/MonoGame/MonoGame.Samples/blob/3.8.4/Platformer2D/README.md" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                          style="background-image: url('/images/create/Platformer2D-Sample.png');
-                                 background-size: contain;
-                                 background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-files"></i> 2D Platformer Starter Kit</h3>
-                        <p>
-                            A complete 2D starter kit based on the original XNA sample, extended for MonoGame.
-                        <p>
-                    </div>
-                </div>
-            </a>
-            <a href="/blog/2025-07-16-3d-starter-kit" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/create/3dscreenshot.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-files"></i> 3D Platformer Starter Kit</h3>
-                        <p>
-                            A complete 3D Platformer starter kit featuring Kenny's assets.
-                        <p>
-                    </div>
-                </div>
-            </a>
-         </div>
+            <div class="mg-create-callout-links" aria-label="Code-first links">
+                <a class="mg-create-inline-link hide-external-icon" href="https://docs.monogame.net/articles/getting_started/index.html">
+                    <span>Installation guides</span>
+                    <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                        <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                    </svg>
+                </a>
+                <a class="mg-create-inline-link hide-external-icon" href="https://docs.monogame.net/articles/tutorials/index.html">
+                    <span>2D and 3D tutorials</span>
+                    <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                        <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                    </svg>
+                </a>
+                <a class="mg-create-inline-link hide-external-icon" href="https://github.com/MonoGame/MonoGame.Samples">
+                    <span>GitHub sample repo</span>
+                    <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                        <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
     </section>
-    <section class="container-xxl mb-5">
-        <h1 id="demos" class="fw-bold">
-            Demos
-            <p/><p/>
-        </h1>
-        <p>
-        Explore bite-sized samples demonstrating key MonoGame features—from sprite batching and input systems to custom shaders and particle effects. These are perfect for learning-by-doing and dissecting efficient design.
-        <p/>        
-        <p>Keep checking back, more Demos coming soon.</p><br/>
-     <div class="mg-item-grid">
-            <a href="/blog/2025-06-10-ascent-demo" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/blog/Ascent.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-rocket-takeoff-fill"></i> Ascent Demo</h3>
-                        <p>
-                            The Ascent demo is the ultimate 3D space ship based shooter demo, coming soon.
-                        <p>
+
+    <section class="container-xxl mg-create-section" aria-labelledby="starterkits">
+        <div class="mg-create-section-header">
+            <p class="mg-create-kicker">Starter kits</p>
+            <h2 id="starterkits">Projects you can open and build on</h2>
+            <p>
+                Quickly set up your first game project with kits built around real gameplay foundations. Each one is
+                meant to get you moving fast, not leave you staring at a blank project.
+            </p>
+            <p>Keep checking back, more starter kits are on the way.</p>
+        </div>
+
+        <div class="mg-create-grid mg-create-grid--compact">
+            <a href="https://github.com/MonoGame/MonoGame.Samples/blob/3.8.4/Platformer2D/README.md" class="mg-create-card hide-external-icon">
+                <div class="mg-create-card-media"
+                     style="background-image: url('/images/create/starter-kit-2d.png'); background-size: 100% 100%; background-position: center;"></div>
+                <div class="mg-create-card-body">
+                    <div class="mg-create-card-meta">
+                        <span class="mg-home-news-tag">Starter kit</span>
+                        <span>2D</span>
                     </div>
+                    <h3><i class="bi bi-files" aria-hidden="true"></i> 2D Platformer Starter Kit</h3>
+                    <p>A complete 2D starter kit based on the original XNA sample, extended for MonoGame.</p>
+                    <span class="mg-home-news-read">
+                        <span>Open kit</span>
+                        <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <a href="/blog/2025-07-16-3d-starter-kit" class="mg-create-card hide-external-icon">
+                <div class="mg-create-card-media"
+                     style="background-image: url('/images/create/starter-kit-3d.png'); background-size: 100% 100%; background-position: center;"></div>
+                <div class="mg-create-card-body">
+                    <div class="mg-create-card-meta">
+                        <span class="mg-home-news-tag">Starter kit</span>
+                        <span>3D</span>
+                    </div>
+                    <h3><i class="bi bi-files" aria-hidden="true"></i> 3D Platformer Starter Kit</h3>
+                    <p>A complete 3D platformer starter kit featuring Kenny's assets and a stronger 3D foundation.</p>
+                    <span class="mg-home-news-read">
+                        <span>Read more</span>
+                        <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                        </svg>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="container-xxl mg-create-section" aria-labelledby="demos">
+        <div class="mg-create-section-header">
+            <p class="mg-create-kicker">Demos</p>
+            <h2 id="demos">Feature-focused experiments and showcases</h2>
+            <p>
+                Explore smaller samples that highlight specific MonoGame capabilities, from rendering and input to
+                movement, effects, and game feel.
+            </p>
+            <p>Keep checking back, more demos are coming soon.</p>
+        </div>
+
+        <div class="mg-create-grid mg-create-grid--single">
+            <a href="/blog/2025-06-10-ascent-demo" class="mg-create-card hide-external-icon">
+                <div class="mg-create-card-media"
+                     style="background-image: url('/images/blog/Ascent.png'); background-size: contain; background-position: top;"></div>
+                <div class="mg-create-card-body">
+                    <div class="mg-create-card-meta">
+                        <span class="mg-home-news-tag">Demo</span>
+                        <span>3D shooter</span>
+                    </div>
+                    <h3><i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i> Ascent Demo</h3>
+                    <p>The Ascent demo is a space-shooter showcase designed to push atmosphere, motion, and 3D action.</p>
+                    <span class="mg-home-news-read">
+                        <span>Read more</span>
+                        <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                        </svg>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="container-xxl mg-create-section" aria-labelledby="resources">
+        <div class="mg-create-section-header">
+            <p class="mg-create-kicker">Resources</p>
+            <h2 id="resources">Keep learning with community-built material</h2>
+            <p>
+                Alongside the official docs, the MonoGame community has built up a useful ecosystem of examples,
+                articles, tools, and sample projects to help you keep going.
+            </p>
+        </div>
+
+        <div class="mg-create-grid">
+            <a href="/resources" class="mg-create-card hide-external-icon">
+                <div class="mg-create-card-media"
+                     style="background-image: url('/images/create/MonoGame.png'); background-size: contain; background-position: top;"></div>
+                <div class="mg-create-card-body">
+                    <div class="mg-create-card-meta">
+                        <span class="mg-home-news-tag">Resources</span>
+                        <span>Community</span>
+                    </div>
+                    <h3><i class="bi bi-collection-play-fill" aria-hidden="true"></i> Community Resources</h3>
+                    <p>A curated list of MonoGame resources to help you build faster, learn more, and share useful tools.</p>
+                    <span class="mg-home-news-read">
+                        <span>Explore resources</span>
+                        <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <a href="https://github.com/MonoGame/MonoGame.samples" class="mg-create-card hide-external-icon">
+                <div class="mg-create-card-media"
+                     style="background-image: url('/images/create/MonoGame.png'); background-size: contain; background-position: top;"></div>
+                <div class="mg-create-card-body">
+                    <div class="mg-create-card-meta">
+                        <span class="mg-home-news-tag">Samples</span>
+                        <span>GitHub</span>
+                    </div>
+                    <h3><i class="bi bi-collection-fill" aria-hidden="true"></i> MonoGame Samples</h3>
+                    <p>Browse the sample collection and see how community projects and focused examples are put together.</p>
+                    <span class="mg-home-news-read">
+                        <span>Browse collection</span>
+                        <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                        </svg>
+                    </span>
                 </div>
             </a>
         </div>
     </section>
 
     <section class="container-xxl mb-5">
-        <h1 id="resources" class="fw-bold">
-            Resources
-            <p/><p/>
-        </h1>
-        <p>
-        Links to loads of resources and community efforts to help developers make the most of MonoGame.
-        <p/>        
-     <div class="mg-item-grid">
-            <a href="/resources" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/create/MonoGame.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-collection-play-fill"></i> Community Resources</h3>
-                        <p>
-                            A list of MonoGame resources that can help you on your journey. If you have a resource you would like to share, then let us know.
-                        <p>
-                    </div>
-                </div>
-            </a>
-            <a href="https://github.com/MonoGame/MonoGame.samples" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/create/MonoGame.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-collection-fill"></i> MonoGame Samples</h3>
-                    <p>
-                        Check out the MonoGame samples collection, showcasing some awesome community projects made with MonoGame..
-                    </p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>    
+        {% include 'partials/_join_community_card.njk' %}
+    </section>
 {% endblock %}

@@ -16,9 +16,16 @@
     }
 
     const initializeCarousel = () => {
+        const carousel = document.getElementById('featuredCarousel');
+
+        if (!carousel)
+            return;
 
 		// Get all the carousel items from the document.
         let container = document.getElementById('carousel-item-container');
+        if (!container)
+            return;
+
         let items = Array.from(container.getElementsByClassName('carousel-item'));
 
 		// Remove them before we add them back shuffled.
@@ -34,6 +41,38 @@
 
 		// Make the first one visible.
 		container.children[0].className += ' active';
+
+        let carouselInView = false;
+
+        const isEditableTarget = (target) => {
+            return target instanceof HTMLElement && (
+                target.isContentEditable ||
+                ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)
+            );
+        };
+
+        const handleKeydown = (event) => {
+            if (!carouselInView || isEditableTarget(event.target))
+                return;
+
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                carousel.querySelector('.carousel-control-prev')?.click();
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                carousel.querySelector('.carousel-control-next')?.click();
+            }
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            carouselInView = entries.some((entry) => entry.isIntersecting);
+        }, { threshold: 0.1 });
+
+        const initialBounds = carousel.getBoundingClientRect();
+        carouselInView = initialBounds.bottom > 0 && initialBounds.top < window.innerHeight;
+
+        observer.observe(carousel);
+        window.addEventListener('keydown', handleKeydown);
     }
 
     initializeCarousel();
