@@ -29,3 +29,17 @@ function shuffle(items) {
         items[randomIndex] = temp;
     }
 }
+
+function maybeSwapHeroTitle() {
+    const heroTitle = document.querySelector('.mg-home-hero-title');
+
+    if (!heroTitle) {
+        return;
+    }
+
+    if (Math.random() < 0.0001) {
+        heroTitle.innerHTML = 'Write Once,<br/>Play Everywhere.';
+    }
+}
+
+window.addEventListener('DOMContentLoaded', maybeSwapHeroTitle);

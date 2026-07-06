@@ -4,8 +4,8 @@ date: "2025-10-20"
 excerpt: In response to the Google Policy changes and iOS updates, the Foundation is releasing a patch to 3.8.4 to update project compliance
 tags: announcements
 author: MonoGame Foundation
-image: /images/blog/cover/monogame_foundation.png
-ogImage: /images/blog/cover/monogame_foundation.png
+image: /images/blog/covers/board-meeting-minutes.png
+ogImage: /images/blog/covers/board-meeting-minutes.png
 ---
 
 ## The 3.8.4.1 Patch release

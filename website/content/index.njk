@@ -4,242 +4,324 @@ title: MonoGame
 {% extends "layouts/base.layout.njk" %}
 
 {% block content %}
-    <section id="featuredCarousel" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel">
-        <div class="carousel-content">
-            <p class="slogan">
+    <section id="featuredCarousel" class="carousel slide carousel-fade mb-5 mg-home-hero" data-bs-ride="carousel">
+        <div class="mg-home-hero-content">
+            <h1 class="mg-home-hero-title">
                 One framework for creating<br/>
                 powerful cross-platform games
+            </h1>
+            <p class="mg-home-hero-copy">
+                MonoGame is the C# framework used by developers to build and ship games across desktop, mobile, console, and the web.
             </p>
-            <div class="carousel-button-container">
-                <a type="button" class="btn btn-lrg mg-button" href="https://docs.monogame.net/">
-                    Getting Started <i class="bi bi-mortarboard"></i>
+            <div class="mg-home-hero-actions">
+                <a class="btn btn-lg mg-button mg-home-hero-primary" href="https://docs.monogame.net/">
+                    <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                    <span>Getting Started</span>
                 </a>
-                <a type="button" class="btn btn-lrg mg-button" href="https://github.com/MonoGame/MonoGame">
-                    GitHub <i class="bi bi-github"></i>
+                <a class="btn btn-lg mg-outline-button mg-home-hero-secondary" href="https://github.com/MonoGame/MonoGame">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                    <span>View on GitHub</span>
                 </a>
             </div>
         </div>
 
         <div id="carousel-item-container" class="carousel-inner h-100">
             {% for game in games %}
-                {% if game.tags.includes("Featured") %}
-                    <div class="carousel-item h-100"
-                        data-bs-interval="10000"
-                        style="background-image: url('/images/showcase-header/{{ game.screenshot }}');
-                                image-rendering: {{ 'pixelated' if game.pixelart else 'auto' }};">
-                        <div class="d-flex flex-row justify-content-center justify-content-md-end mb-2 me-2">
-                            <div class="d-flex flex-column align-items-center">
-                                <a href="{{ game.url }}" title="{{ game.title }}">
+                {% if game.tags and ("Featured" in game.tags) %}
+                    <div class="carousel-item h-100 mg-home-hero-slide"
+                        data-bs-interval="10000">
+                        <div class="mg-home-hero-background"
+                            style="background-image: url('/images/showcase-header/{{ game.screenshot }}');
+                                   image-rendering: {{ 'pixelated' if game.pixelart else 'auto' }};">
+                        </div>
+                        <a href="{{ game.url }}"
+                            title="{{ game.title }}"
+                            aria-label="Visit {{ game.title }}"
+                            class="mg-home-featured-game-card mg-no-link hide-external-icon">
+                            <div class="mg-home-featured-game-media">
+                                {% if game.logo %}
                                     <img src="/images/showcase-header/{{ game.logo }}"
                                         alt="{{ game.title }} logo"
-                                        class="carousel-item-logo"/>
-                                </a>
-                                <a href="https://x.com/search?q=BuiltWithMonoGame"
-                                title="Built With MonoGame"
-                                class="built-with-monogame">
-                                    #BuiltWithMonoGame
-                                </a>
+                                        class="mg-home-featured-game-image"
+                                        loading="lazy"
+                                        decoding="async"/>
+                                {% else %}
+                                    <img src="/images/showcase-header/{{ game.screenshot }}"
+                                        alt="{{ game.title }} screenshot"
+                                        class="mg-home-featured-game-image"
+                                        loading="lazy"
+                                        decoding="async"/>
+                                {% endif %}
                             </div>
-                        </div>
+                            <div class="mg-home-featured-game-copy">
+                                <div class="mg-home-featured-game-label">FEATURED GAME</div>
+                                <div class="mg-home-featured-game-title">{{ game.title }}</div>
+                                <div class="mg-home-featured-game-tag">#BuiltWithMonoGame</div>
+                            </div>
+                        </a>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
-        <button class="carousel-control-prev pe-none" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
-                <img class="d-none d-md-block carousel-control-icon carousel-control-prev-icon pe-auto" src="/images/home-page/chevron-left.svg">
-                <span class="visually-hidden">Previous</span>
+
+        <div class="carousel-indicators mg-home-hero-indicators">
+            {% set featuredIndex = 0 %}
+            {% for game in games %}
+                {% if game.tags and ("Featured" in game.tags) %}
+                    <button type="button"
+                        data-bs-target="#featuredCarousel"
+                        data-bs-slide-to="{{ featuredIndex }}"
+                        {% if featuredIndex == 0 %}class="active" aria-current="true"{% endif %}
+                        aria-label="Go to featured game {{ featuredIndex + 1 }}"></button>
+                    {% set featuredIndex = featuredIndex + 1 %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <button class="carousel-control-prev mg-home-carousel-control" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev" aria-label="Previous featured game">
+            <span class="mg-home-carousel-control-icon" aria-hidden="true">
+                <i class="bi bi-chevron-left"></i>
+            </span>
+            <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next pe-none" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
-            <img class="d-none d-md-block carousel-control-icon carousel-control-next-icon pe-auto" src="/images/home-page/chevron-right.svg">
+        <button class="carousel-control-next mg-home-carousel-control" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next" aria-label="Next featured game">
+            <span class="mg-home-carousel-control-icon" aria-hidden="true">
+                <i class="bi bi-chevron-right"></i>
+            </span>
             <span class="visually-hidden">Next</span>
         </button>
     </section>
 
-    <section class="container-xxl mb-5">
-        <div class="row">
-            <h3 class="fw-semibold mb-4 text-body-emphasis">Latest News</h3>
+    <section class="container-xxl mb-5 mg-home-news-section" aria-labelledby="latest-news-title">
+        <div class="mg-home-news-header">
+            <div>
+                <h2 id="latest-news-title">Latest News</h2>
+                <p>Stay up to date with releases, community updates, and Foundation news.</p>
+            </div>
+            <a href="/blog/" class="mg-home-news-all hide-external-icon" title="View all news">
+                <span>View all news</span>
+                <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                    <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                </svg>
+            </a>
         </div>
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-11">
-                <div class="mg-item-grid">
-                    {% for post in collections.blogPosts | reverse %}
-                        {% if loop.index <= 3 %}
-                            <a class="mg-no-link" href="{{ post.url }}">
-                                <div class="mg-card mg-box-shadow h-100 d-flex flex-column">
-                                    <div class="mg-card-thumbnail"
-                                         style="background-image: url('{{ post.data.image }}');"
-                                         href="{{ post.url }}"></div>
-                                    <div class="mg-card-body">
-                                        <small>
-                                            {{ post.data.author }} -- {{ post.date | readableDate }}
-                                        </small>
-                                        <div class="mg-card-title">{{ post.data.title }}</div>
-                                        <div class="mg-card-excerpt mb-3" title="{{ post.data.excerpt }}">
-                                            <p>{{ post.data.excerpt }}</p>
-                                        </div>
-                                        Click to read more...
-                                    </div>
-                                </div>
-                            </a>
-                        {% endif %}
-                    {% endfor %}
+
+        <div class="mg-home-news-grid">
+            {% for post in collections.blogPosts | reverse %}
+                {% if loop.index <= 3 %}
+                    <a class="mg-home-news-card hide-external-icon" href="{{ post.url }}">
+                        <div class="mg-home-news-media"
+                             style="background-image: url('{{ post.data.image }}');"></div>
+                        <div class="mg-home-news-body">
+                            <div class="mg-home-news-meta">
+                                <span class="mg-home-news-tag">{{ post.data.category | default('Foundation') }}</span>
+                                <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+                            </div>
+                            <h3>{{ post.data.title }}</h3>
+                            <p>{{ post.data.excerpt }}</p>
+                            <span class="mg-home-news-read">
+                                <span>Read article</span>
+                                <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                                    <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% include 'partials/_monogame_is_free.njk' %}
+    </section>
+
+    <section class="container-xxl mb-5 mg-home-feature-section mg-home-managed-code-section" aria-labelledby="managed-code-title">
+        <div class="mg-home-feature-card mg-home-managed-code-card">
+            <div class="mg-home-feature-copy">
+                <p class="mg-home-feature-kicker">Build with freedom</p>
+                <h2 id="managed-code-title">Managed Code</h2>
+                <p>
+                    By leveraging C# and other .NET languages on Microsoft and Mono platforms you can write modern,
+                    fast, and reliable game code using your editor of choice.
+                </p>
+
+                <div class="mg-home-tool-grid" aria-label="Supported development tools">
+                    <a class="mg-home-tool-card hide-external-icon"
+                       href="https://code.visualstudio.com/?utm_source=monogame.net&utm_medium=referral&utm_campaign=managed_code"
+                       target="_blank"
+                       rel="noopener"
+                       aria-label="Visit Visual Studio Code">
+                        <img class="mg-home-tool-icon" src="/images/editors/visual-studio-code.png" alt="" loading="lazy" decoding="async">
+                        <h3>Visual Studio Code</h3>
+                        <p>Lightweight, fast, and extremely extensible.</p>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <a class="mg-home-tool-card hide-external-icon"
+                       href="https://visualstudio.microsoft.com/?utm_source=monogame.net&utm_medium=referral&utm_campaign=managed_code"
+                       target="_blank"
+                       rel="noopener"
+                       aria-label="Visit Visual Studio">
+                        <img class="mg-home-tool-icon" src="/images/editors/visual-studio.png" alt="" loading="lazy" decoding="async">
+                        <h3>Visual Studio</h3>
+                        <p>Full-featured IDE for .NET development.</p>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <a class="mg-home-tool-card hide-external-icon"
+                       href="https://www.jetbrains.com/rider/?utm_source=monogame.net&utm_medium=referral&utm_campaign=managed_code"
+                       target="_blank"
+                       rel="noopener"
+                       aria-label="Visit JetBrains Rider">
+                        <img class="mg-home-tool-icon" src="/images/editors/jetbrains-rider.webp" alt="" loading="lazy" decoding="async">
+                        <h3>JetBrains Rider</h3>
+                        <p>Powerful .NET IDE by JetBrains.</p>
+                        <span aria-hidden="true">→</span>
+                    </a>
                 </div>
             </div>
-            <div class="col-12 col-lg-1 d-flex align-items-center justify-content-center">
-                <a href="/blog/" class="mg-no-link" title="View all news">
-                    <div class="fs-1 mg-color-orange">&gt;&gt;</div>
+
+            <div class="mg-home-code-showcase" aria-hidden="true">
+                <div class="mg-home-showcase-image-card">
+                    <img src="/images/home-page/managed-code.png" alt="" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-xxl mb-5 mg-home-feature-section mg-home-platform-section" aria-labelledby="cross-platform-title">
+        <div class="mg-home-platform-integrations">
+            <div class="mg-home-platform-copy">
+                <p class="mg-home-feature-kicker">Deploy everywhere</p>
+                <h2 id="cross-platform-title">Cross-Platform</h2>
+                <p>
+                    Build your game for multiple platforms from one framework. MonoGame supports desktop,
+                    mobile, and console targets while keeping your game code portable.
+                </p>
+                <p class="mg-home-platform-note">
+                    <span aria-hidden="true">*</span> Console access requires you to be
+                    <a href="https://docs.monogame.net/articles/console_access.html">authorized for those platforms</a>.
+                </p>
+            </div>
+
+            <div class="mg-home-platform-matrix" aria-label="Supported platforms">
+                <div class="mg-home-platform-row">
+                    <div class="mg-home-platform-row-heading">
+                        <i class="bi bi-display" aria-hidden="true"></i>
+                        <span>Desktop</span>
+                    </div>
+                    <div class="mg-home-platform-pills">
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/windows.svg' %}<span>Windows</span></div>
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/apple.svg' %}<span>macOS</span></div>
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/linux.svg' %}<span>Linux</span></div>
+                    </div>
+                </div>
+
+                <div class="mg-home-platform-row">
+                    <div class="mg-home-platform-row-heading">
+                        <i class="bi bi-phone" aria-hidden="true"></i>
+                        <span>Mobile</span>
+                    </div>
+                    <div class="mg-home-platform-pills">
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/android.svg' %}<span>Android</span></div>
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/ios.svg' %}<span>iOS</span></div>
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/apple.svg' %}<span>iPadOS</span></div>
+                    </div>
+                </div>
+
+                <div class="mg-home-platform-row">
+                    <div class="mg-home-platform-row-heading">
+                        <i class="bi bi-controller" aria-hidden="true"></i>
+                        <span>Console <em aria-hidden="true">*</em></span>
+                    </div>
+                    <div class="mg-home-platform-pills">
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/playstation.svg' %}<span>Playstation 4</span></div>
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/playstation.svg' %}<span>Playstation 5</span></div>
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/xbox_one.svg' %}<span>Xbox One</span></div>
+                        <div class="mg-home-platform-pill">{% include 'svgs/logos/nintendo_switch.svg' %}<span>Nintendo Switch</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-xxl mb-5 mg-home-open-source-section" aria-labelledby="open-source-title">
+        <div class="mg-home-open-source-inner">
+            <div class="mg-home-open-source-header">
+                <p class="mg-home-feature-kicker">Open-source</p>
+                <h2 id="open-source-title">Open-Source</h2>
+                <p>
+                    All source code is available to you, ensuring you have the ability to make changes when you need to
+                    or even port to whole new platforms. MonoGame is owned and developed by the MonoGame Foundation.
+                </p>
+            </div>
+
+            <div class="mg-home-open-source-grid">
+                <a target="_self"
+                   href="https://github.com/monogame/monogame"
+                   class="mg-home-open-source-card mg-home-open-source-card--source hide-external-icon">
+                    <div class="mg-home-open-source-icon">
+                        <i class="bi bi-github" aria-hidden="true"></i>
+                    </div>
+                    <div class="mg-home-open-source-card-body">
+                        <h3>Source Code</h3>
+                        <p>
+                            The MonoGame Framework is completely free and open-source. All source code is available
+                            to you. You can view the source code on GitHub, clone it and/or create a fork.
+                        </p>
+                        <span>
+                            <span>View source code</span>
+                            <svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a target="_self"
+                   href="https://github.com/MonoGame/MonoGame/blob/develop/LICENSE.txt"
+                   class="mg-home-open-source-card mg-home-open-source-card--license hide-external-icon">
+                    <div class="mg-home-open-source-icon">
+                        <i class="bi bi-body-text" aria-hidden="true"></i>
+                    </div>
+                    <div class="mg-home-open-source-card-body">
+                        <h3>License</h3>
+                        <p>
+                            The MonoGame project is licensed under the Microsoft Public License except for a few
+                            portions of the code.
+                        </p>
+                        <span>
+                            <span>View license</span>
+                            <svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a target="_self"
+                   href="https://github.com/MonoGame/MonoGame/blob/develop/CONTRIBUTING.md"
+                   class="mg-home-open-source-card mg-home-open-source-card--contribute hide-external-icon">
+                    <div class="mg-home-open-source-icon">
+                        <i class="bi bi-git" aria-hidden="true"></i>
+                    </div>
+                    <div class="mg-home-open-source-card-body">
+                        <h3>Contribute</h3>
+                        <p>
+                            As a free and open-source project, the MonoGame Framework is maintained by the MonoGame
+                            Foundation and developed alongside contributions made by the community.
+                        </p>
+                        <span>
+                            <span>Learn how to contribute</span>
+                            <svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                            </svg>
+                        </span>
+                    </div>
                 </a>
             </div>
         </div>
     </section>
 
     <section class="container-xxl mb-5">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <h3 class="fw-semibold mb-4 text-body-emphasis">Managed Code</h3>
-                <p>
-                    By leveraging C# and other .NET languages on Microsoft and Mono platforms you can write modern, fast, and reliable game code using your editor of choice.
-            </p>
-            <ul class="list-unstyled">
-                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Visual Studio Code</li>
-                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Visual Studio </li>
-                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> JetBrains Rider</li>
-            </ul>
-            </div>
-            <div class="col-12 col-md-6 d-flex flex-row justify-content-center">
-                <img src="/images/home-page/managed-code.png" style="width: 100%; height: auto; margin-bottom: 1rem;" loading="lazy">
-            </div>
-        </div>
-    </section>
-
-    <section class="container-xxl mb-5">
-        <div class="row">
-            <div class="col-12 col-md-6 d-flex flex-column justify-content-center mb-5">
-                <div class=" cross-platform-logos">
-                    {% include 'svgs/logos/windows.svg' %}
-                    {% include 'svgs/logos/apple.svg' %}
-                    {% include 'svgs/logos/linux.svg' %}
-                    {% include 'svgs/logos/android.svg' %}
-                    {% include 'svgs/logos/ios.svg' %}
-                    {% include 'svgs/logos/playstation.svg' %}
-                    {% include 'svgs/logos/xbox_one.svg' %}
-                    {% include 'svgs/logos/nintendo_switch.svg' %}
-                </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <h3 class="fw-semibold mb-4 text-body-emphasis">Cross-Platform</h3>
-                <p>
-                    Build your game for multiple platforms.  MonoGame currently supports:
-                    <div class="row">
-                        <div class="col-6 col-md-4">
-                            <h5>Desktop</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Windows</li>
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> MacOS</li>
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Linux</li>
-                            </ul>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <h5>Mobile</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Android</li>
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> iOS</li>
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> iPadOS</li>
-                            </ul>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <h5>Console <i class="mg-color-orange fs-4">*</i></h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Playstation 4</li>
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Playstation 5</li>
-                                <li class="mb-3"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Xbox One</li>
-                                <li class="mb-3 text-nowrap"><i class="bi bi-check-lg mg-color-orange pe-2"></i> Nintendo Switch</li>
-                            </ul>
-                        </div>
-                    </div>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <p class="text-secondary">
-                <i class="mg-color-orange fs-4">*</i> Console access requires you to be <a href="https://docs.monogame.net/articles/console_access.html">authorized for those platforms</a>.
-            </p>
-        </div>
-    </section>
-
-    <section class="container-xxl mb-5">
-        <div class="row">
-            <h3 class="fw-semibold mb-4 text-body-emphasis">Open-Source</h3>
-            <p>
-                All source code is available to you, ensuring
-                you have the ability to make changes when you need to or even port to
-                whole new platforms.  MonoGame is owned and developed by the MonoGame
-                Foundation.
-            </p>
-            <div class="col-12 col-lg-4 mb-5">
-                <div class="mg-card mg-box-shadow h-100">
-                    <a target="_self"
-                    href="https://github.com/monogame/monogame"
-                    class="mg-no-link hide-external-icon">
-                        <div class="mg-card-body d-flex flex-column h-100">
-                            <div class="mg-card-title"><i class="bi bi-github"></i> Source Code</div>
-                            <p>
-                                The MonoGame Framework is completely free and open-source.  All source code is
-                                available to you.  You can view the source code on GitHub, clone it and/or create
-                                a fork.
-                            </p>
-                            <p class="mt-auto">Click to view source Code</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-5">
-                <div class="mg-card mg-box-shadow h-100">
-                    <a target="_self"
-                        href="https://github.com/MonoGame/MonoGame/blob/develop/LICENSE.txt"
-                        class="mg-no-link hide-external-icon">
-                        <div class="mg-card-body d-flex flex-column h-100">
-                            <div class="mg-card-title"><i class="bi bi-body-text"></i> License</div>
-                            <p class="card-text">
-                                The MonoGame project is licensed under the Microsoft Public License
-                                except for a few portions of the code.
-                            </p>
-                            <p class="mt-auto">Click to view license</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-5">
-                <div class="mg-card mg-box-shadow h-100">
-                    <a target="_self"
-                        href="https://github.com/MonoGame/MonoGame/blob/develop/CONTRIBUTING.md"
-                        class="mg-no-link hide-external-icon">
-                        <div class="mg-card-body d-flex flex-column h-100">
-                            <div class="mg-card-title"><i class="bi bi-git"></i> Contribute</div>
-                            <p>
-                                As a free and open-source project, the MonoGame Framework is maintained by the MonoGame
-                                Foundation and developed along side contributions made by the community.
-                            </p>
-                            <p class="mt-auto">Click to learn how to contribute</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container-xxl mb-5">
-        <div class="row">
-            <h3 class="fw-semibold mb-4 text-body-emphasis">MonoGame Is Free</h3>
-            <p>
-                MonoGame is, and will always remain, free to use. There is no subscription model,
-                royalty payments, licensing costs, or runtime fees associated with using MonoGame.
-            </p>
-            <p>
-                The MonoGame Foundation is a non-profit foundation that relies on community donations
-                to fund its projects and goals. Consider supporting MonoGame through a <a href="/donate/">one-time or monthly donation</a>.
-            </p>
-        </div>
+        {% include 'partials/_join_community_card.njk' %}
     </section>
 {% endblock %}
 

@@ -4,8 +4,8 @@ date: "2025-07-10"
 excerpt: Meet the MonoGame team and get your questions answered
 tags: announcements
 author: MonoGame Foundation
-image: /images/blog/cover/monogame_foundation.png
-ogImage: /images/blog/cover/monogame_foundation.png
+image: /images/blog/covers/ama-sessions.png
+ogImage: /images/blog/covers/ama-sessions.png
 ---
 
 The MonoGame Foundation is hoping you can join the MonoGame community for our 10th AMA session.

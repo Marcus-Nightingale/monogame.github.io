@@ -4,8 +4,8 @@ date: "2025-01-01"
 excerpt: Happy New Year
 tags: announcements
 author: MonoGame Foundation
-image: /images/blog/cover/monogame_foundation.png
-ogImage: /images/blog/cover/monogame_foundation.png
+image: /images/blog/covers/board-meeting-minutes.png
+ogImage: /images/blog/covers/board-meeting-minutes.png
 ---
 
 The MonoGame Foundation wishes everyone a Happy New Year.

@@ -5,7 +5,7 @@ excerpt: MonoGame Spotlight Ep. 1 Announcement
 tags: announcements
 author: MonoGame Foundation
 image: /images/blog/ScottPilgrimEx-March.png
-ogImage: /images/blog/cover/monogame_foundation.png
+ogImage: /images/blog/covers/board-meeting-minutes.png
 ---
 
 ## MonoGame Spotlight Ep. 1 Announcement

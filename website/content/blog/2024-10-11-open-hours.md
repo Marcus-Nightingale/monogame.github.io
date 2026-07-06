@@ -4,8 +4,8 @@ date: "2024-10-11"
 excerpt: Meet the MonoGame team and get your questions answered
 tags: announcements
 author: MonoGame Foundation
-image: /images/blog/cover/monogame_foundation.png
-ogImage: /images/blog/cover/monogame_foundation.png
+image: /images/blog/covers/ama-sessions.png
+ogImage: /images/blog/covers/ama-sessions.png
 ---
 
 The MonoGame Foundation is proud to announce a new level of engagement with the MonoGame community through a series of monthly AMA sessions aimed at improving communication.

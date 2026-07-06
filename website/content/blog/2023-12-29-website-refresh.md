@@ -4,8 +4,8 @@ date: "2023-12-29"
 excerpt: Several new changes have been made to the website in this proof of concept by changing to 11ty to allow for a more proper website design than the restrictions in place when using DocFX.  In this post, I'd like to go over these changes with you and, hopefully, get some feedback from community members
 tags: website
 author: Christopher Whitley (Aristurtle)
-image: /images/blog/cover/monogame_foundation.png
-ogImage: /images/blog/cover/monogame_foundation.png
+image: /images/blog/covers/board-meeting-minutes.png
+ogImage: /images/blog/covers/board-meeting-minutes.png
 ---
 
 ## Website Refresh

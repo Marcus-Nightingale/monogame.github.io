@@ -4,8 +4,8 @@ date: "2025-01-16"
 excerpt: Catch up on what was discussed during our 4th "Open Hours" AMA
 tags: announcements
 author: MonoGame Foundation
-image: /images/blog/cover/monogame_foundation.png
-ogImage: /images/blog/cover/monogame_foundation.png
+image: /images/blog/covers/ama-sessions.png
+ogImage: /images/blog/covers/ama-sessions.png
 ---
 
 Thanks to everyone who joined us for our 4th "Open Hours" AMA session.

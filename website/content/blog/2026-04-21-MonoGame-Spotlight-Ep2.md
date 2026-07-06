@@ -5,7 +5,7 @@ excerpt: MonoGame Spotlight Ep. 2 Announcement
 tags: announcements
 author: MonoGame Foundation
 image: /images/blog/Tamashika-April.png
-ogImage: /images/blog/cover/monogame_foundation.png
+ogImage: /images/blog/covers/board-meeting-minutes.png
 ---
 
 ## MonoGame Spotlight Ep. 2 Announcement
