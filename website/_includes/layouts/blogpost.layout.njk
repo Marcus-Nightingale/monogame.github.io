@@ -1,28 +1,46 @@
 {% extends 'layouts/base.layout.njk' %}
 
 {% block content %}
-    <main class="container pt-5">
-        <article class="blog-post">
-            <img class="blog-cover" src="{{ image }}"/>
-            <div class="blog-info">
-                <h1 class="blog-title">{{ title }}</h1>
-                <div class="blog-meta">
-                    <span class="blog-author">By: {{ author }}</span>
-                    <span class="blog-date">{{ page.date | readableDate }}</span>
+    <main class="container-xxl py-5">
+        <div class="blog-page-layout">
+            <article class="blog-post">
+                <nav class="mg-about-breadcrumb blog-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <a href="/blog/">Blog</a>
+                    <span aria-hidden="true">›</span>
+                    <span>{{ title }}</span>
+                </nav>
+                <img class="blog-cover" src="{{ image }}" alt="{{ title }}"/>
+                <div class="blog-info">
+                    <h1 class="blog-title">{{ title }}</h1>
+                    <div class="blog-tags">
+                        {% for tag in tags %}
+                            {% if tag !== "blog" %}
+                                <a href="/blog/{{ tag }}" type="button" class="btn mg-outline-button category">
+                                    {{ tag }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-                <div class="blog-tags">
-                    {% for tag in tags %}
-                        {% if tag !== "blog" %}
-                            <a href="/blog/{{ tag }}" type="button" class="btn mg-outline-button category">
-                                {{ tag }}
-                            </a>
-                        {% endif %}
-                    {% endfor %}
+                <div class="blog-body">
+                    {{ content | safe }}
                 </div>
-            </div>
-            <div class="blog-body">
-                {{ content | safe }}
-            </div>
-        </article>
+            </article>
+            <aside class="blog-affix">
+                <section class="blog-author-card">
+                    <div class="blog-author-avatar" aria-hidden="true">MG</div>
+                    <div class="blog-author-copy">
+                        <div class="blog-author-name">{{ author }}</div>
+                        <div class="blog-author-role">Author</div>
+                    </div>
+                </section>
+                <section class="blog-rail-card blog-rail-card--toc">
+                    {{ content | toc(headingText='On this page', wrapperClass='blog-toc toc') | safe }}
+                </section>
+                <span class="blog-date">Date posted: {{ page.date | readableDate }}</span>
+            </aside>
+        </div>
     </main>
 {% endblock %}

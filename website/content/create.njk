@@ -7,7 +7,11 @@ title: Create
     <section class="mg-create-hero" aria-labelledby="monogame-create">
         <div class="container-xxl mg-create-hero-inner">
             <div class="mg-create-hero-copy">
-                <p class="mg-home-feature-kicker">Build with MonoGame</p>
+                <nav class="mg-about-breadcrumb mg-create-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <span>Create</span>
+                </nav>
                 <h1 id="monogame-create">Start making something playable, fast.</h1>
                 <p class="mg-create-hero-body">
                     Whether you are brand new to game development or a seasoned coder exploring new territory,
@@ -70,7 +74,7 @@ title: Create
 
     <section class="container-xxl mg-create-section" aria-labelledby="starterkits">
         <div class="mg-create-section-header">
-            <p class="mg-create-kicker">Starter kits</p>
+            <p class="mg-home-feature-kicker mb-3">Starter kits</p>
             <h2 id="starterkits">Projects you can open and build on</h2>
             <p>
                 Quickly set up your first game project with kits built around real gameplay foundations. Each one is
@@ -82,13 +86,13 @@ title: Create
         <div class="mg-create-grid mg-create-grid--compact">
             <a href="https://github.com/MonoGame/MonoGame.Samples/blob/3.8.4/Platformer2D/README.md" class="mg-create-card hide-external-icon">
                 <div class="mg-create-card-media"
-                     style="background-image: url('/images/create/starter-kit-2d.png'); background-size: 100% 100%; background-position: center;"></div>
+                     style="background-image: url('/images/create/starter-kit-2d.png'); background-size: 104% 110%; background-position: center;"></div>
                 <div class="mg-create-card-body">
                     <div class="mg-create-card-meta">
                         <span class="mg-home-news-tag">Starter kit</span>
                         <span>2D</span>
                     </div>
-                    <h3><i class="bi bi-files" aria-hidden="true"></i> 2D Platformer Starter Kit</h3>
+                    <h3>2D Platformer Starter Kit</h3>
                     <p>A complete 2D starter kit based on the original XNA sample, extended for MonoGame.</p>
                     <span class="mg-home-news-read">
                         <span>Open kit</span>
@@ -101,13 +105,13 @@ title: Create
 
             <a href="/blog/2025-07-16-3d-starter-kit" class="mg-create-card hide-external-icon">
                 <div class="mg-create-card-media"
-                     style="background-image: url('/images/create/starter-kit-3d.png'); background-size: 100% 100%; background-position: center;"></div>
+                     style="background-image: url('/images/create/starter-kit-3d.png'); background-size: 104% 110%; background-position: center;"></div>
                 <div class="mg-create-card-body">
                     <div class="mg-create-card-meta">
                         <span class="mg-home-news-tag">Starter kit</span>
                         <span>3D</span>
                     </div>
-                    <h3><i class="bi bi-files" aria-hidden="true"></i> 3D Platformer Starter Kit</h3>
+                    <h3>3D Platformer Starter Kit</h3>
                     <p>A complete 3D platformer starter kit featuring Kenny's assets and a stronger 3D foundation.</p>
                     <span class="mg-home-news-read">
                         <span>Read more</span>
@@ -122,7 +126,7 @@ title: Create
 
     <section class="container-xxl mg-create-section" aria-labelledby="demos">
         <div class="mg-create-section-header">
-            <p class="mg-create-kicker">Demos</p>
+            <p class="mg-home-feature-kicker mb-3">Demos</p>
             <h2 id="demos">Feature-focused experiments and showcases</h2>
             <p>
                 Explore smaller samples that highlight specific MonoGame capabilities, from rendering and input to
@@ -131,16 +135,16 @@ title: Create
             <p>Keep checking back, more demos are coming soon.</p>
         </div>
 
-        <div class="mg-create-grid mg-create-grid--single">
+        <div class="mg-create-grid mg-create-grid--single mg-create-grid--compact">
             <a href="/blog/2025-06-10-ascent-demo" class="mg-create-card hide-external-icon">
                 <div class="mg-create-card-media"
-                     style="background-image: url('/images/blog/Ascent.png'); background-size: contain; background-position: top;"></div>
+                     style="background-image: url('/images/blog/Ascent.png');background-size: cover;background-position: top;background-position: center;"></div>
                 <div class="mg-create-card-body">
                     <div class="mg-create-card-meta">
                         <span class="mg-home-news-tag">Demo</span>
                         <span>3D shooter</span>
                     </div>
-                    <h3><i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i> Ascent Demo</h3>
+                    <h3>Ascent Demo</h3>
                     <p>The Ascent demo is a space-shooter showcase designed to push atmosphere, motion, and 3D action.</p>
                     <span class="mg-home-news-read">
                         <span>Read more</span>
@@ -155,7 +159,7 @@ title: Create
 
     <section class="container-xxl mg-create-section" aria-labelledby="resources">
         <div class="mg-create-section-header">
-            <p class="mg-create-kicker">Resources</p>
+            <p class="mg-home-feature-kicker mb-3">Resources</p>
             <h2 id="resources">Keep learning with community-built material</h2>
             <p>
                 Alongside the official docs, the MonoGame community has built up a useful ecosystem of examples,
@@ -163,16 +167,16 @@ title: Create
             </p>
         </div>
 
-        <div class="mg-create-grid">
+        <div class="mg-create-grid mg-create-grid--compact">
             <a href="/resources" class="mg-create-card hide-external-icon">
                 <div class="mg-create-card-media"
-                     style="background-image: url('/images/create/MonoGame.png'); background-size: contain; background-position: top;"></div>
+                     style="background-image: url('/images/create/community-resources.png'); background-size: 109% 116%; background-position: center;"></div>
                 <div class="mg-create-card-body">
                     <div class="mg-create-card-meta">
                         <span class="mg-home-news-tag">Resources</span>
                         <span>Community</span>
                     </div>
-                    <h3><i class="bi bi-collection-play-fill" aria-hidden="true"></i> Community Resources</h3>
+                    <h3>Community Resources</h3>
                     <p>A curated list of MonoGame resources to help you build faster, learn more, and share useful tools.</p>
                     <span class="mg-home-news-read">
                         <span>Explore resources</span>
@@ -185,13 +189,13 @@ title: Create
 
             <a href="https://github.com/MonoGame/MonoGame.samples" class="mg-create-card hide-external-icon">
                 <div class="mg-create-card-media"
-                     style="background-image: url('/images/create/MonoGame.png'); background-size: contain; background-position: top;"></div>
+                     style="background-image: url('/images/create/samples.png'); background-size: 109% 116%; background-position: center;"></div>
                 <div class="mg-create-card-body">
                     <div class="mg-create-card-meta">
                         <span class="mg-home-news-tag">Samples</span>
                         <span>GitHub</span>
                     </div>
-                    <h3><i class="bi bi-collection-fill" aria-hidden="true"></i> MonoGame Samples</h3>
+                    <h3>MonoGame Samples</h3>
                     <p>Browse the sample collection and see how community projects and focused examples are put together.</p>
                     <span class="mg-home-news-read">
                         <span>Browse collection</span>

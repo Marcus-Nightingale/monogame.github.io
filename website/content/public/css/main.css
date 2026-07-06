@@ -63,13 +63,24 @@ body {
     width: 1.15rem;
     height: 1.15rem;
     flex: 0 0 auto;
-    transition: transform var(--mg-transition-fast);
+    transition: transform var(--mg-transition-fast), opacity var(--mg-transition-fast);
 }
 
 .mg-home-news-all:hover .mg-home-news-arrow,
 .mg-home-news-all:focus-visible .mg-home-news-arrow,
 .mg-home-news-card:hover .mg-home-news-arrow,
 .mg-home-news-card:focus-visible .mg-home-news-arrow {
+    transform: translateX(3px);
+}
+
+.mg-home-news-card .mg-home-news-arrow {
+    opacity: 0;
+    transform: translateX(-0.25rem);
+}
+
+.mg-home-news-card:hover .mg-home-news-arrow,
+.mg-home-news-card:focus-visible .mg-home-news-arrow {
+    opacity: 1;
     transform: translateX(3px);
 }
 
@@ -2929,10 +2940,26 @@ blockquote {
     min-height: 46rem;
     padding: 0;
     background:
-        radial-gradient(circle at 14% 20%, rgba(var(--mg-orange-dark-rgb), 0.14), transparent 24rem),
-        radial-gradient(circle at 86% 18%, rgba(137, 87, 255, 0.12), transparent 22rem),
+        radial-gradient(circle at 14% 20%, rgba(var(--mg-orange-dark-rgb), 0.12), transparent 22rem),
+        radial-gradient(circle at 86% 18%, rgba(137, 87, 255, 0.1), transparent 20rem),
         linear-gradient(135deg, #070b12 0%, #0b1220 48%, #171126 100%);
     color: #fff;
+}
+
+.mg-create-hero::before {
+    content: "";
+    position: absolute;
+    inset: -12% -10%;
+    background:
+        radial-gradient(circle at 18% 28%, rgba(var(--mg-orange-dark-rgb), 0.36), transparent 18%),
+        radial-gradient(circle at 78% 22%, rgba(137, 87, 255, 0.26), transparent 20%),
+        radial-gradient(circle at 62% 72%, rgba(88, 214, 141, 0.18), transparent 24%),
+        radial-gradient(circle at 28% 78%, rgba(255, 255, 255, 0.08), transparent 26%);
+    filter: blur(42px) saturate(1.1);
+    opacity: 0.88;
+    mix-blend-mode: screen;
+    animation: mg-create-hero-float 18s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
 .mg-create-hero::after {
@@ -2950,6 +2977,20 @@ blockquote {
     align-items: center;
     min-height: 46rem;
     padding-block: clamp(4rem, 7vw, 5.5rem);
+}
+
+.mg-create-hero-inner::before {
+    content: "";
+    position: absolute;
+    inset: 9% 18% 12% 8%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(var(--mg-orange-light-rgb), 0.16), transparent 0 18%),
+        radial-gradient(circle at 84% 16%, rgba(137, 87, 255, 0.14), transparent 0 16%),
+        radial-gradient(circle at 76% 82%, rgba(88, 214, 141, 0.12), transparent 0 18%);
+    filter: blur(60px);
+    opacity: 0.75;
+    animation: mg-create-hero-drift 24s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
 .mg-create-hero-copy {
@@ -3005,6 +3046,37 @@ blockquote {
 
 .mg-create-hero-actions .btn {
     min-width: 0;
+}
+
+@keyframes mg-create-hero-float {
+    0% {
+        transform: translate3d(-1.5%, -0.5%, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(1.2%, 1%, 0) scale(1.04);
+    }
+
+    100% {
+        transform: translate3d(2.2%, -1.1%, 0) scale(1.02);
+    }
+}
+
+@keyframes mg-create-hero-drift {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate3d(1.5%, -1%, 0) scale(1.03);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mg-create-hero::before,
+    .mg-create-hero-inner::before {
+        animation: none;
+    }
 }
 
 .mg-create-section {
@@ -3097,6 +3169,10 @@ blockquote {
 .mg-create-grid--compact {
     grid-template-columns: repeat(2, minmax(0, 24rem));
     justify-content: start;
+}
+
+.mg-create-grid--compact.mg-create-grid--single {
+    grid-template-columns: minmax(0, 24rem);
 }
 
 .mg-create-grid--single {
@@ -4897,9 +4973,24 @@ blockquote {
 *** Section: Blog Posts
 *** Style classes for individual blog post pages
 *******************************************************************************/
+.blog-page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: 2.5rem;
+    align-items: start;
+}
+
 .blog-post {
-    width: 70%;
-    margin: auto;
+    min-width: 0;
+}
+
+.blog-kicker {
+    color: var(--mg-orange-secondary);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
 }
 
 .blog-post h1,
@@ -4920,10 +5011,12 @@ blockquote {
     height: auto;
     border-radius: 7px;
     box-shadow: 0 5px 10px -3px #00000078;
+    margin-bottom: 2rem;
 }
 
 .blog-title {
-    margin-top: 64px;
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .blog-meta {
@@ -4949,6 +5042,152 @@ blockquote {
 .blog-post img {
     width: 100%;
     height: auto
+}
+
+.blog-affix {
+    position: sticky;
+    top: calc(var(--navbar-height) + 1.6rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.blog-author-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.2rem 0.35rem;
+}
+
+.blog-rail-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--bs-border-color) 72%, var(--mg-orange-primary) 28%);
+    border-radius: 1.3rem;
+    background:
+        radial-gradient(circle at 18% 10%, color-mix(in srgb, var(--mg-orange-primary) 7%, transparent), transparent 13rem),
+        color-mix(in srgb, var(--bs-body-bg) 94%, var(--bs-secondary-bg) 6%);
+    box-shadow: 0 18px 36px -28px rgba(0, 0, 0, 0.65);
+    padding: 1.45rem;
+}
+
+.blog-rail-card::after {
+    position: absolute;
+    inset: auto 1.15rem 0 1.15rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--mg-orange-primary) 75%, transparent), transparent);
+    opacity: 0.75;
+    content: '';
+    pointer-events: none;
+}
+
+.blog-author-avatar {
+    width: 3.6rem;
+    height: 3.6rem;
+    flex: 0 0 3.6rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    background:
+        radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.28), transparent 35%),
+        linear-gradient(180deg, var(--mg-orange-secondary), var(--mg-orange-primary));
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 14px 24px -16px rgba(var(--mg-orange-light-rgb), 0.7);
+}
+
+.blog-author-copy {
+    min-width: 0;
+}
+
+.blog-author-name {
+    color: var(--bs-heading-color);
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.blog-author-role {
+    color: var(--mg-orange-secondary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+}
+
+.blog-rail-card .toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+}
+
+.blog-rail-card .toc h5 {
+    color: var(--bs-heading-color);
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+    padding-top: 0;
+    width: auto;
+}
+
+.blog-rail-card .toc ol {
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.blog-rail-card .toc > ol,
+.blog-rail-card .toc > ol > li > ol {
+    list-style: none;
+}
+
+.blog-rail-card .toc li {
+    margin-top: 0;
+}
+
+.blog-rail-card .toc a {
+    color: var(--bs-secondary-color);
+    text-decoration: none;
+    display: block;
+    padding: 0.38rem 0;
+    font-size: 1rem;
+    line-height: 1.35;
+    transition: color 0.2s ease;
+}
+
+.blog-rail-card .toc a:hover,
+.blog-rail-card .toc a:focus-visible {
+    color: var(--mg-orange-secondary);
+}
+
+.blog-rail-card .toc a.is-active {
+    color: var(--bs-heading-color);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em;
+}
+
+.blog-rail-card .toc ol ol {
+    margin-left: 1.1rem;
+}
+
+.blog-rail-card .toc ol ol a {
+    font-size: 1rem;
+}
+
+@media (max-width: 991.98px) {
+    .blog-page-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .blog-affix {
+        position: static;
+        margin-top: 1rem;
+    }
 }
 
 /*******************************************************************************
