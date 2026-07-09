@@ -4,120 +4,264 @@ title: Donate
 {% extends "layouts/base.layout.njk" %}
 
 {% block content %}
-    <section class="container-xxl my-5">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-9 mb-5">
-                    <h1 id="support-monogame" class="fw-bold"><a href="#support-monogame">Support MonoGame</a></h1>
-                    <p>MonoGame is an open-source answer to expensive, restrictive game engines.  It is free to use on ALL platforms, even on game consoles.  This was achieved by the generous donation of code by hundreds of independent developers over the last 15 years.</p>
-<p>To ensure MonoGame continues to thrive into the future the MonoGame Foundation <b>needs your support</b>.  Your donations help us keep pace with advancing technology and new platforms, ensuring MonoGame remains a powerful tool for all game developers.</p>
-<p>If your time using MonoGame has been enjoyable, educational, or it helped create your successful game, consider giving back to the project.  Your contributions ensure a future where game development is accessible to everyone.</p>
-<p>Donate now and be a part of this exciting journey.</p>
-    <br/>
-                    <div class="row justify-content-center">
-                        <div class="col-md-auto mb-2 mx-4">
-                            <a class="btn mg-patreon-button px-4" type="button" href="https://github.com/sponsors/MonoGame" target="_blank">
-                                    {% include 'svgs/logos/github.svg'%} GitHub
-                            </a>
-                        </div>
-                        <div class="col-md-auto mb-2 mx-4">
-                            <a class="btn mg-patreon-button px-4" type="button" href="https://www.paypal.com/donate/?hosted_button_id=K3K9QACYMZMUE" target="_blank">
-                                    {% include 'svgs/logos/paypal.svg'%} PayPal
-                            </a>
-                        </div>
-                        <div class="col-md-auto mb-2 mx-4">
-                            <a class="btn mg-patreon-button px-4" type="button" href="https://www.patreon.com/bePatron?u=3142012" target="_blank">
-                                    {% include 'svgs/logos/patreon.svg'%} Patreon
-                            </a>
-                        </div>
-                    </div>
+    <section class="mg-donate-hero" aria-labelledby="support-monogame">
+        <div class="container-xxl mg-donate-hero-inner">
+            <div class="mg-donate-hero-copy">
+                <nav class="mg-about-breadcrumb mg-donate-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <span>Donate</span>
+                </nav>
+                <h1 id="support-monogame">Help keep MonoGame free and open source.</h1>
+                <p class="mg-donate-hero-body">
+                    MonoGame is an open-source answer to expensive, restrictive game engines. It is free to use on all platforms, even on game consoles. This was achieved by the generous donation of code by hundreds of independent developers over the last 15 years.
+                </p>
+                <p class="mg-donate-hero-body">
+                    To ensure MonoGame continues to thrive into the future the MonoGame Foundation needs your support. Your donations help us keep pace with advancing technology and new platforms, ensuring MonoGame remains a powerful tool for all game developers.
+                </p>
+                <div class="mg-home-hero-actions mg-donate-actions">
+                    <a class="btn btn-lg mg-button mg-home-hero-primary hide-external-icon" href="#donate-options">
+                        <span>See donation options</span>
+                    </a>
                 </div>
-                <div class="col-sm-3 patreon-stats">
-                    <div class="patreon-stat monthly">
-                        <span id="per-month"></span>
-                        <p>Monthly</p>
-                    </div>
-                    <div class="patreon-stat patreon">
-                        <span id="total-patrons"></span>
-                        <p>Sponsors</p>
+            </div>
+
+            <div class="mg-donate-hero-panel" aria-label="Donation statistics and highlights">
+                <div class="mg-donate-dashboard">
+                    <div class="mg-donate-stat-grid">
+                        <div class="mg-donate-stat-card mg-donate-stat-card--primary">
+                            <strong id="per-month"></strong>
+                            <span>Monthly support</span>
+                        </div>
+                        <div class="mg-donate-stat-card">
+                            <strong id="total-patrons"></strong>
+                            <span>Sponsors</span>
+                        </div>
+                        <div class="mg-donate-stat-card mg-donate-stat-card--accent">
+                            <strong id="open-source-percent">0%</strong>
+                            <span>Open source</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container-xxl mb-5">
-        <h1 id="sponsors" class="fw-bold"><a href="#sponsors">Premier Sponsors</a></h1>
-	<p>If you're interested in becoming a headline sponsor of MonoGame please <a href="/about/#contact-us">contact us</a>.</p>
-    <br/>
-        <div class="container">
-	<div class="row g-5 justify-content-center align-items-center">
-            {% for sponsor in sponsors %}
-                <div class="col-auto">
-                    <a class="hide-external-icon" href="{{sponsor.url}}" title="{{sponsor.name}}">
-                        <img src="/images/donate/{{sponsor.image}}" class="img-fluid" alt="{{sponsor.name}}"/>
-                    </a>
-                </div>
-            {% endfor %}
-	</div>
+    <section class="container-xxl mg-donate-section mg-donate-section--options" id="donate-options" aria-labelledby="sponsor-options-title">
+        <div class="mg-donate-section-head">
+            <div>
+                <p class="mg-home-feature-kicker mb-3">Support options</p>
+                <h2 id="sponsor-options-title">Choose the route that works best for you.</h2>
+            </div>
+            <p>
+                If your time using MonoGame has been enjoyable, educational, or helped create your successful game, consider giving back to the project.
+            </p>
+        </div>
+
+        <div class="mg-donate-support-grid">
+            <a class="mg-donate-support-card hide-external-icon" href="https://github.com/sponsors/MonoGame" target="_blank" rel="noopener noreferrer">
+                <span class="mg-donate-support-card-top">
+                    <span class="mg-donate-support-logo">{% include 'svgs/logos/github.svg' %}</span>
+                    <span class="mg-donate-support-frequency">Monthly + One-off</span>
+                </span>
+                <strong>GitHub Sponsors</strong>
+                <span>Choose a recurring sponsorship or make a one-time contribution directly through GitHub.</span>
+                <em>Support on GitHub <span aria-hidden="true">→</span></em>
+            </a>
+
+            <a class="mg-donate-support-card hide-external-icon" href="https://www.paypal.com/donate/?hosted_button_id=K3K9QACYMZMUE" target="_blank" rel="noopener noreferrer">
+                <span class="mg-donate-support-card-top">
+                    <span class="mg-donate-support-logo">{% include 'svgs/logos/paypal.svg' %}</span>
+                    <span class="mg-donate-support-frequency">Monthly + One-off</span>
+                </span>
+                <strong>PayPal</strong>
+                <span>Set up monthly support or make a one-time donation using your PayPal account.</span>
+                <em>Support with PayPal <span aria-hidden="true">→</span></em>
+            </a>
+
+            <a class="mg-donate-support-card hide-external-icon" href="https://www.patreon.com/bePatron?u=3142012" target="_blank" rel="noopener noreferrer">
+                <span class="mg-donate-support-card-top">
+                    <span class="mg-donate-support-logo">{% include 'svgs/logos/patreon.svg' %}</span>
+                    <span class="mg-donate-support-frequency">Monthly</span>
+                </span>
+                <strong>Patreon</strong>
+                <span>Join a recurring Patreon tier and help fund MonoGame’s ongoing work each month.</span>
+                <em>Join on Patreon <span aria-hidden="true">→</span></em>
+            </a>
+        </div>
+
+        <div class="mg-donate-impact-block" aria-labelledby="support-impact-title">
+            <div class="mg-donate-impact-intro">
+                <p class="mg-home-feature-kicker mb-3">Support impact</p>
+                <h3 id="support-impact-title">What your support keeps moving.</h3>
+            </div>
+            <div class="mg-donate-impact-grid">
+                <article class="mg-donate-impact-card">
+                    <span class="mg-donate-impact-icon"><i class="bi bi-code-slash" aria-hidden="true"></i></span>
+                    <div>
+                        <h4>Framework</h4>
+                        <p>Core development, tooling, and long-term maintenance.</p>
+                    </div>
+                </article>
+                <article class="mg-donate-impact-card">
+                    <span class="mg-donate-impact-icon"><i class="bi bi-globe2" aria-hidden="true"></i></span>
+                    <div>
+                        <h4>Platforms</h4>
+                        <p>Desktop, mobile, console, and web support.</p>
+                    </div>
+                </article>
+                <article class="mg-donate-impact-card">
+                    <span class="mg-donate-impact-icon"><i class="bi bi-mortarboard" aria-hidden="true"></i></span>
+                    <div>
+                        <h4>Education</h4>
+                        <p>Documentation and practical learning resources.</p>
+                    </div>
+                </article>
+                <article class="mg-donate-impact-card">
+                    <span class="mg-donate-impact-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                    <div>
+                        <h4>Community</h4>
+                        <p>Events, contributors, and shared infrastructure.</p>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
-    <section class="container-xxl mb-5">
-        <h1 id="patreons" class="fw-bold"><a href="#patreons">Monthly Sponsors</a></h1>
-        <p>
-            The following is a list of individuals and studios that support us through <a href="https://www.patreon.com/bePatron?u=3142012">Patreon</a>.
-        </p>
-        <br/>
-	<div class="credits">
-            {% set tiers = [
-                { name: "EnvironmentMapEffect", url: "https://www.patreon.com/checkout/MonoGame?rid=9142452", size: "fs-3" },
-                { name: "Model.Draw", url: "https://www.patreon.com/checkout/MonoGame?rid=9142450", size: "fs-4" },
-                { name: "DrawUserPrimitives", url: "https://www.patreon.com/checkout/MonoGame?rid=1916865", size: "fs-5" },
-                { name: "SpriteBatch", url: "https://www.patreon.com/checkout/MonoGame?rid=1867475", size: "fs-6" },
-                { name: "Cornflower Blue", url: "https://www.patreon.com/checkout/MonoGame?rid=1867471", size: "fs-6" }
-            ] %}
-            {% for tier in tiers %}
-               <div class="row justify-content-center">
-                       <hr class="mx-auto" style="width:300px; height:2px; background:#FFF; border:0; opacity: 0.25; margin: 2rem auto;"/>
-		       <h3 class="fw-bold text-center"><a href="#{{tier.name}}">{{tier.name}}</a></h3>
-			<br />
-			<br />
-			<ul class="donationList list-unstyled">
-		            {% for patreon in patreons %}
-			        {% if patreon.tier == tier.name and patreon.active %}
-					<li class="{{tier.size}}">{% if patreon.url %}<a href="{{patreon.url}}">{% endif %}{{patreon.name}}{% if patreon.url %}</a>{% endif %}</li>
-			        {% endif %}
-	                    {% endfor %}
-		            {% for patreon in patreons %}
-			        {% if patreon.tier == tier.name and not patreon.active %}
-			                <li class="{{tier.size}} text-secondary">{{patreon.name}}</li>
-			        {% endif %}
-	                    {% endfor %}
-			</ul>
-			<br />
-			<br />
-			<br />
-			<br />
-		</div>
+    <section class="container-xxl mg-donate-section mg-donate-section--premier" aria-labelledby="premier-sponsors-title">
+        <div class="mg-donate-section-head">
+            <div>
+                <p class="mg-home-feature-kicker mb-3">Premier sponsors</p>
+                <h2 id="premier-sponsors-title" class="mb-4">Backing MonoGame’s future.</h2>
+                <p>Premier sponsors give MonoGame the stability to plan beyond the next release. Interested in joining them? <a href="/about/#contact-us">Talk to the Foundation.</a></p>
+            </div>
+        </div>
 
-            {% endfor%}
-	</div>
+        <div class="mg-donate-premier-grid">
+            {% for sponsor in sponsors %}
+                <a class="mg-donate-premier-card mg-donate-premier-card--{{ sponsor.name | slugify }} hide-external-icon" href="{{ sponsor.url }}" title="{{ sponsor.name }}">
+                    <div class="mg-donate-premier-card-media">
+                        <img src="/images/donate/{{ sponsor.image }}" alt="{{ sponsor.name }}" loading="lazy"/>
+                    </div>
+                    <div class="mg-donate-premier-card-body">
+                        <h3>{{ sponsor.name }}</h3>
+                        <p>{{ sponsor.description }}</p>
+                        <span>
+                            <span>Visit sponsor</span>
+                            <svg class="mg-home-news-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
     </section>
 
-    <section class="container-xxl mb-5">
-        <h1 id="donations" class="fw-bold"><a href="#donations">Donations</a></h1>
-        <p>
-            The following is a preserved list of individuals and studios that generously donated in the past to help run the project.
-        </p>
-        <div class="row">
-            {% for donor in donations | sort(true, false, 'amount') %}
-                <div class="col-6 col-md-3 mb-3 text-center">
-                    {% if donor.url %}<a href="{{donor.url}}">{% endif %}
-                        {{donor.name}}
-                    {% if donor.url %}</a>{% endif %}
-                    <br />
-                    {{ (donor.amount / 100).toLocaleString('en-US', {style: 'currency', currency: 'USD'}) }}
+    <section class="container-xxl mg-donate-section mg-donate-section--monthly" aria-labelledby="monthly-sponsors-title">
+        <div class="mg-donate-section-head">
+            <div>
+                <p class="mg-home-feature-kicker mb-3">Monthly sponsors</p>
+                <h2 id="monthly-sponsors-title">The people and studios supporting MonoGame every month.</h2>
+            </div>
+            <p>
+                The following is a list of individuals and studios that support us through <a href="https://www.patreon.com/bePatron?u=3142012">Patreon</a>.
+            </p>
+        </div>
+
+        <div class="mg-donate-tier-grid">
+            {% set tiers = [
+                { name: "EnvironmentMapEffect", anchor: "EnvironmentMapEffect", url: "https://www.patreon.com/checkout/MonoGame?rid=9142452", rank: 1 },
+                { name: "Model.Draw", anchor: "Model.Draw", url: "https://www.patreon.com/checkout/MonoGame?rid=9142450", rank: 2 },
+                { name: "DrawUserPrimitives", anchor: "DrawUserPrimitives", url: "https://www.patreon.com/checkout/MonoGame?rid=1916865", rank: 3 },
+                { name: "SpriteBatch", anchor: "SpriteBatch", url: "https://www.patreon.com/checkout/MonoGame?rid=1867475", rank: 4 },
+                { name: "Cornflower Blue", anchor: "Cornflower Blue", url: "https://www.patreon.com/checkout/MonoGame?rid=1867471", rank: 5 }
+            ] %}
+            {% for tier in tiers %}
+                <article class="mg-donate-tier-card mg-donate-tier-card--rank-{{ tier.rank }}" id="{{ tier.anchor }}">
+                    <div class="mg-donate-tier-top">
+                        <span class="mg-donate-tier-rank" aria-hidden="true">0{{ tier.rank }}</span>
+                        <div>
+                            <p class="mg-home-feature-kicker mb-2">Sponsor level</p>
+                            <h3>{{ tier.name }}</h3>
+                        </div>
+                    </div>
+                    <div class="mg-donate-tier-copy">
+                        <p>
+                            {% if tier.rank == 1 %}
+                                Our largest monthly supporters set the tone for the rest of the wall.
+                            {% elif tier.rank == 2 %}
+                                A strong supporting tier that helps keep the project moving week to week.
+                            {% elif tier.rank == 3 %}
+                                A steady group of contributors keeping the lights on for day-to-day work.
+                            {% elif tier.rank == 4 %}
+                                Reliable support that helps MonoGame keep shipping and staying polished.
+                            {% else %}
+                                The entry tier that still makes a real difference every single month.
+                            {% endif %}
+                        </p>
+                        <a class="mg-donate-tier-link hide-external-icon" href="{{ tier.url }}" target="_blank" rel="noopener noreferrer">
+                            Join this tier <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="mg-donate-chip-grid" aria-label="{{ tier.name }} sponsors">
+                        {% for patreon in patreons %}
+                            {% if patreon.tier == tier.name and patreon.active %}
+                                <span class="mg-donate-chip">{{ patreon.name }}</span>
+                            {% endif %}
+                        {% endfor %}
+                        {% for patreon in patreons %}
+                            {% if patreon.tier == tier.name and not patreon.active %}
+                                <span class="mg-donate-chip mg-donate-chip--muted">{{ patreon.name }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    {% set donation_rows = donations | sort(true, false, 'amount') %}
+    <section class="mg-donate-section mg-donate-section--history mb-5" aria-labelledby="donations-title">
+        <div class="container-xxl">
+            <div class="mg-donate-section-head">
+                <div>
+                    <p class="mg-home-feature-kicker mb-3">Donations</p>
+                    <h2 id="donations-title">Past support that helped <br />keep the project running.</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="mg-donate-history-wall mg-donate-history-wall--full" aria-label="Donation wall of fame">
+            {% for rowIndex in [0, 1, 2, 3, 4] %}
+                <div class="mg-donate-wall-row {{ 'mg-donate-wall-row--left' if rowIndex % 2 == 0 else 'mg-donate-wall-row--right' }}" style="--mg-donate-wall-duration: {{ 94 + (rowIndex * 8) }}s;">
+                    <div class="mg-donate-wall-track">
+                        {% for donor in donation_rows %}
+                            {% if loop.index0 % 5 == rowIndex %}
+                                {% set wallClass = '' %}
+                                {% if donor.amount >= 5000 and donor.amount <= 10000 %}
+                                    {% set wallClass = wallClass + ' mg-donate-wall-card--shiny mg-donate-wall-card--silver' %}
+                                {% endif %}
+                                {% if donor.amount > 10000 and donor.amount < 100000 %}
+                                    {% set wallClass = wallClass + ' mg-donate-wall-card--shiny mg-donate-wall-card--gold' %}
+                                {% endif %}
+                                {% if donor.amount >= 100000 %}
+                                    {% set wallClass = wallClass + ' mg-donate-wall-card--shiny mg-donate-wall-card--platinum' %}
+                                {% endif %}
+                                {% if donor.url %}
+                                    <a class="mg-donate-wall-card hide-external-icon{{ wallClass }}" href="{{ donor.url }}" target="_blank" rel="noopener noreferrer">
+                                        <span class="mg-donate-wall-amount">{{ (donor.amount / 100).toLocaleString('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}) }}</span>
+                                        <span>{{ donor.name }}</span>
+                                    </a>
+                                {% else %}
+                                    <article class="mg-donate-wall-card{{ wallClass }}">
+                                        <span class="mg-donate-wall-amount">{{ (donor.amount / 100).toLocaleString('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}) }}</span>
+                                        <span>{{ donor.name }}</span>
+                                    </article>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             {% endfor %}
         </div>

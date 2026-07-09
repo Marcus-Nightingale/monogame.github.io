@@ -30,6 +30,67 @@ function shuffle(items) {
     }
 }
 
+function shuffleRandom(items) {
+    let currentIndex = items.length;
+    let temp, randomIndex;
+
+    while(currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temp = items[currentIndex];
+        items[currentIndex] = items[randomIndex];
+        items[randomIndex] = temp;
+    }
+}
+
+function setupDonateWallOfFame() {
+    const wall = document.querySelector('.mg-donate-history-wall');
+
+    if (!wall) {
+        return;
+    }
+
+    const rows = Array.from(wall.querySelectorAll('.mg-donate-wall-row'));
+
+    if (!rows.length) {
+        return;
+    }
+
+    rows.forEach((row, rowIndex) => {
+        const track = row.querySelector('.mg-donate-wall-track');
+
+        if (!track) {
+            return;
+        }
+
+        const originalCards = Array.from(track.children);
+
+        if (!originalCards.length) {
+            return;
+        }
+
+        const shuffledCards = originalCards.slice();
+        shuffleRandom(shuffledCards);
+
+        row.style.setProperty('--mg-donate-wall-duration', `${(80 + (Math.random() * 40) + (rowIndex * 4)).toFixed(2)}s`);
+        track.innerHTML = '';
+
+        shuffledCards.forEach((card) => {
+            const glintDuration = 4.1 + (Math.random() * 2.6);
+            const glintDelay = Math.random() * 10;
+
+            card.style.setProperty('--mg-donate-wall-glint-duration', `${glintDuration.toFixed(2)}s`);
+            card.style.setProperty('--mg-donate-wall-glint-delay', `${glintDelay.toFixed(2)}s`);
+            track.appendChild(card);
+        });
+
+        shuffledCards.forEach((card) => {
+            track.appendChild(card.cloneNode(true));
+        });
+    });
+}
+
 function maybeSwapHeroTitle() {
     const heroTitle = document.querySelector('.mg-home-hero-title');
 
@@ -101,3 +162,4 @@ function setupBlogTocHighlighter() {
 
 window.addEventListener('DOMContentLoaded', maybeSwapHeroTitle);
 window.addEventListener('DOMContentLoaded', setupBlogTocHighlighter);
+window.addEventListener('DOMContentLoaded', setupDonateWallOfFame);

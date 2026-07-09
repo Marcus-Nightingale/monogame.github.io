@@ -1,54 +1,82 @@
 (async () => {
     'use strict';
 
-    function countUp(element, end, format) {
-        const speed = 20;
-        const increment = Math.ceil(end / speed);
-        let value = 0;
+    const animations = new WeakMap();
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        if(value < end) {
-            const interval = setInterval(() => {
-                if(value + increment >= end) {
-                    element.textContent = format(end);
-                    clearInterval(interval);
-                } else {
-                    value += increment;
-                    element.textContent = format(value);
-                }
-            }, speed);
+    function countUp(element, end, format, duration = 900) {
+        if (!element || !Number.isFinite(end)) {
+            return;
         }
+
+        const previous = animations.get(element);
+        const start = previous?.value ?? 0;
+
+        if (previous?.frame) {
+            cancelAnimationFrame(previous.frame);
+        }
+
+        if (reducedMotion || start === end) {
+            element.textContent = format(end);
+            animations.set(element, { value: end, frame: null });
+            return;
+        }
+
+        const startedAt = performance.now();
+        const state = { value: start, frame: null };
+        animations.set(element, state);
+
+        const update = (now) => {
+            const progress = Math.min((now - startedAt) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            state.value = start + ((end - start) * eased);
+            element.textContent = format(state.value);
+
+            if (progress < 1) {
+                state.frame = requestAnimationFrame(update);
+            } else {
+                state.value = end;
+                state.frame = null;
+                element.textContent = format(end);
+            }
+        };
+
+        state.frame = requestAnimationFrame(update);
     }
 
-	// We have the GH Sponsors data updated from a workflow.
-	let patron_count = gh_sponsor_count;
-	let pledge_sum = gh_sponsor_sum;
+    const totalPatrons = document.getElementById('total-patrons');
+    const perMonth = document.getElementById('per-month');
+    const openSourcePercent = document.getElementById('open-source-percent');
+    const formatCurrency = (value) => (value / 100).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
 
-	// Fetch Patreon data.
-	{
-		const response = await fetch('https://api.patreon.com/platform/users?filter[patreon_url]=https://www.patreon.com/MonoGame');
-		const data = await response.json();
-		if(data.included && data.included.length > 0) 
-		{
-			const attributes = data.included[0].attributes;
-			patron_count += attributes.paid_member_count;
-			pledge_sum += attributes.pledge_sum;
-		}
-	}
+    // These values are available with the page, so do not wait on Patreon to show them.
+    let patronCount = gh_sponsor_count;
+    let pledgeSum = gh_sponsor_sum + 100000 + 125000;
 
-	// Re-logic's fixed monthly donation.
-	pledge_sum += 100000;
+    countUp(totalPatrons, patronCount, (value) => Math.round(value).toLocaleString('en-US'));
+    countUp(perMonth, pledgeSum, formatCurrency);
+    countUp(openSourcePercent, 100, (value) => `${Math.round(value)}%`);
 
-    // ConcernedApe's fixed monthly donation.
-	pledge_sum += 125000;
-    
-	// Animate the results.
-	const total_patrons = document.getElementById('total-patrons');
-	countUp(total_patrons, patron_count, (x) => x);
+    try {
+        const response = await fetch('https://api.patreon.com/platform/users?filter[patreon_url]=https://www.patreon.com/MonoGame');
 
-	const per_month = document.getElementById('per-month');
-	countUp(per_month, pledge_sum, (x) => (x / 100).toLocaleString('en-US', {
-			 style: 'currency',
-			 currency: 'USD'
-		}));
+        if (!response.ok) {
+            return;
+        }
 
+        const data = await response.json();
+        if (data.included?.length > 0) {
+            const attributes = data.included[0].attributes;
+            patronCount += Number(attributes.paid_member_count) || 0;
+            pledgeSum += Number(attributes.pledge_sum) || 0;
+
+            countUp(totalPatrons, patronCount, (value) => Math.round(value).toLocaleString('en-US'), 650);
+            countUp(perMonth, pledgeSum, formatCurrency, 650);
+        }
+    } catch {
+        // The known sponsorship totals remain visible if Patreon is unavailable.
+    }
 })();

@@ -2,11 +2,13 @@
     {
         "name": "Re-Logic",
         "url": "https://re-logic.com/",
-        "image": "Re-Logic_Logo_with_BG.jpg"
+        "image": "relogic_logo.png",
+        "description": "The studio behind Terraria, helping fund the framework and the work required to keep it healthy for the long term."
     },
     {
         "name": "ConcernedApe",
         "url": "https://www.stardewvalley.net/",
-        "image": "ConcernedApe_logo.png"
+        "image": "ConcernedApe_logo.png",
+        "description": "The creator of Stardew Valley, investing directly in MonoGame’s continued development, support, and future."
     }
 ]
