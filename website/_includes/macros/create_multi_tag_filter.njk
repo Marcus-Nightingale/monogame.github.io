@@ -1,31 +1,27 @@
 {# Creates a section containing tags from the given categories that can be #}
 {# used to click to filter the items on a page based on those categories #}
 {# This version supports multi-tag filtering with client-side JavaScript #}
-{% macro create_multi_tag_filter(categories) %}
-    <section class="container-xxl my-5">
-        <h3 class="fw-bold">Categories</h3>
-        <p>Click categories to filter results. Hold <kbd>Shift</kbd> to select multiple categories and show items that have all selected tags.</p>
-        <div class="d-flex flex-row flex-wrap gap-3 mb-1" id="tag-filter-container">
+{% macro create_multi_tag_filter(categories, basePath, currentPath) %}
+    <section class="container-xxl my-5 mg-resource-filter" aria-labelledby="resource-filter-title">
+        <h2 id="resource-filter-title">Categories</h2>
+        <nav class="mg-showcase-filter-list" id="tag-filter-container" aria-label="Resource categories">
             {% for category in categories %}
-                {% if category !== "all" %}
-                    <button type="button"
-                            class="btn mg-outline-button d-flex justify-content-center text-capitalize fw-bold tag-filter-btn"
-                            data-tag="{{ category }}">
-                        {{ category }}
-                    </button>
-                {% endif %}
+                {% set isActive = (category === "all" and currentPath === basePath) or category in currentPath %}
+                {% set displayCategory = category | capitalize %}
+                {% if category === "2d" %}{% set displayCategory = "2D" %}{% endif %}
+                {% if category === "3d" %}{% set displayCategory = "3D" %}{% endif %}
+                {% if category === "ai" %}{% set displayCategory = "AI" %}{% endif %}
+                {% if category === "ui" %}{% set displayCategory = "UI" %}{% endif %}
+                {% if category === "sound effects" %}{% set displayCategory = "Sound Effects" %}{% endif %}
+                <a href="{{ basePath }}{{ (category | slugify) if category !== "all" }}"
+                   class="mg-showcase-filter-pill{{ " active" if isActive }}"
+                   data-resource-category="{{ category | lower }}"
+                   data-resource-label="{{ "All" if category === "all" else displayCategory }}"
+                   {% if isActive %}aria-current="page"{% endif %}>
+                    <span class="mg-resource-filter-label">{{ "All" if category === "all" else displayCategory }}</span>
+                    <span class="mg-showcase-filter-count" aria-label="resources"></span>
+                </a>
             {% endfor %}
-        </div>
-        <div class="mt-3">
-            <button type="button" 
-                    class="btn btn-outline-secondary fw-bold px-4 py-2" 
-                    id="clear-filters">
-                Clear All Filters
-            </button>
-        </div>
-        <div class="mt-3 text-muted" id="filter-status">
-            <span id="results-count">{{ "All results" }}</span> • 
-            <span id="active-filters">No filters active</span>
-        </div>
+        </nav>
     </section>
 {% endmacro %}

@@ -15,7 +15,7 @@ title: Resources
         </p>
     </section>
 
-    {{ create_multi_tag_filter(collections.resourceTags, "resource-gallery") }}
+    {{ create_multi_tag_filter(collections.resourceTags, "/resources/", page.url) }}
 
     <section class="container-xxl mb-5">
         <div id="resource-gallery" class="mg-item-grid mg-grid-2">

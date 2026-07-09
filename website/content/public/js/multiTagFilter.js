@@ -1,164 +1,101 @@
 (() => {
     'use strict';
 
-    class ResourceTagFilter {
-        constructor() {
-            this.container = document.getElementById('resource-gallery');
-            this.items = this.container ? Array.from(this.container.children) : [];
-            this.selectedTags = new Set();
-            
-            this.init();
-        }
+    const setupResourceFilters = () => {
+        const gallery = document.getElementById('resource-gallery');
+        const pills = Array.from(document.querySelectorAll('[data-resource-category]'));
+        const title = document.getElementById('resource-gallery-title');
+        const count = document.getElementById('resource-gallery-count');
 
-        init() {
-            if (!this.container) {
-                console.warn('Resource gallery not found');
-                return;
+        if (!gallery || !pills.length || !title || !count) return;
+
+        const cards = Array.from(gallery.querySelectorAll('[data-tags]'));
+        const allPill = pills.find((pill) => pill.dataset.resourceCategory === 'all') || pills[0];
+        const categoryNames = new Set(pills.map((pill) => pill.dataset.resourceCategory));
+        const cardMatchesCategories = (card, categories) => {
+            const tags = card.dataset.tags.split(',').map((tag) => tag.trim());
+            return categories.every((category) => tags.includes(category));
+        };
+
+        const getCategoriesFromLocation = () => {
+            const url = new URL(window.location.href);
+            const queryCategories = url.searchParams.get('categories');
+
+            if (queryCategories) {
+                return queryCategories.split(',').filter((category) => categoryNames.has(category) && category !== 'all');
             }
 
-            this.bindEvents();
-                        
-            this.updateDisplay();
-            this.updateFilterStatus();
-        }
+            const matchingPill = pills.find((pill) => new URL(pill.href).pathname === url.pathname);
+            return matchingPill && matchingPill !== allPill ? [matchingPill.dataset.resourceCategory] : [];
+        };
 
-        getItemTags(item) {
-            // Resources use data-tags attribute
-            if (item.dataset.tags) {
-                return item.dataset.tags.split(',').map(tag => tag.trim().toLowerCase()).filter(tag => tag);
-            }
-            return [];
-        }
-
-        bindEvents() {
-            // Tag filter buttons
-            const tagButtons = document.querySelectorAll('.tag-filter-btn');
-            tagButtons.forEach(button => {
-                button.addEventListener('click', (e) => this.handleTagClick(e));
-            });
-
-            // Clear all button
-            const clearButton = document.getElementById('clear-filters');
-            if (clearButton) {
-                clearButton.addEventListener('click', () => this.clearAllFilters());
-            }
-
-            // Keyboard shortcuts
-            document.addEventListener('keydown', (e) => {
-                if (e.target.classList.contains('tag-filter-btn')) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.handleTagClick(e);
-                    }
-                }
-            });
-        }
-
-        handleTagClick(event) {
-            const button = event.target;
-            const tag = button.dataset.tag.toLowerCase();
-            
-            // Handle multi-select with Shift key
-            if (event.shiftKey) {
-                this.toggleTag(tag, button);
-            } else {
-                this.clearAllFilters();
-                this.toggleTag(tag, button);
-            }
-            
-            this.updateDisplay();
-            this.updateFilterStatus();
-        }
-
-        toggleTag(tag, button) {
-            if (this.selectedTags.has(tag)) {
-                this.selectedTags.delete(tag);
-                button.classList.remove('active');
-                button.setAttribute('aria-pressed', 'false');
-            } else {
-                this.selectedTags.add(tag);
-                button.classList.add('active');
-                button.setAttribute('aria-pressed', 'true');
-            }
-            
-            // Remove focus to prevent button from appearing highlighted after click
-            button.blur();
-        }
-
-        clearAllFilters() {
-            this.selectedTags.clear();
-            const tagButtons = document.querySelectorAll('.tag-filter-btn');
-            tagButtons.forEach(button => {
-                button.classList.remove('active');
-                button.setAttribute('aria-pressed', 'false');
-            });
-            this.updateDisplay();
-            this.updateFilterStatus();
-        }
-
-        updateDisplay() {
+        const setCategories = (categories, { updateHistory = false } = {}) => {
+            const selectedCategories = [...new Set(categories)].filter((category) => categoryNames.has(category) && category !== 'all');
             let visibleCount = 0;
-            
-            this.items.forEach(item => {
-                const itemTags = this.getItemTags(item);
-                const shouldShow = this.shouldShowItem(itemTags);
-                
-                if (shouldShow) {
-                    item.style.display = '';
-                    item.classList.remove('d-none');
-                    visibleCount++;
-                } else {
-                    item.style.display = 'none';
-                    item.classList.add('d-none');
+
+            cards.forEach((card) => {
+                const matches = cardMatchesCategories(card, selectedCategories);
+                card.hidden = !matches;
+                visibleCount += matches ? 1 : 0;
+            });
+
+            pills.forEach((pill) => {
+                const category = pill.dataset.resourceCategory;
+                const isActive = category === 'all' ? selectedCategories.length === 0 : selectedCategories.includes(category);
+                pill.classList.toggle('active', isActive);
+                pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                pill.toggleAttribute('aria-current', selectedCategories.length === 1 && isActive);
+
+                const candidateCategories = category === 'all' || selectedCategories.includes(category)
+                    ? selectedCategories
+                    : [...selectedCategories, category];
+                const countLabel = pill.querySelector('.mg-showcase-filter-count');
+
+                if (countLabel) {
+                    countLabel.textContent = cards.filter((card) => cardMatchesCategories(card, candidateCategories)).length;
                 }
             });
-        }
 
-        shouldShowItem(itemTags) {
-            // If no tags selected show all
-            if (this.selectedTags.size === 0) {
-                return true;
-            }
+            title.textContent = selectedCategories.length
+                ? selectedCategories.map((category) => pills.find((pill) => pill.dataset.resourceCategory === category).dataset.resourceLabel).join(' + ')
+                : 'All resources';
+            count.textContent = `${visibleCount} ${visibleCount === 1 ? 'resource' : 'resources'}`;
 
-            // Check if item has ALL of the selected tags
-            return Array.from(this.selectedTags).every(selectedTag => 
-                itemTags.some(itemTag => itemTag === selectedTag)
-            );
-        }
+            if (updateHistory) {
+                const url = new URL(allPill.href, window.location.origin);
 
-        updateFilterStatus() {
-            const resultsCountElement = document.getElementById('results-count');
-            const activeFiltersElement = document.getElementById('active-filters');
-            
-            if (resultsCountElement) {
-                const visibleCount = this.items.filter(item => 
-                    !item.classList.contains('d-none') && item.style.display !== 'none'
-                ).length;
-                
-                resultsCountElement.textContent = 
-                    visibleCount === this.items.length 
-                        ? 'All results' 
-                        : `${visibleCount} of ${this.items.length} results`;
-            }
-            
-            if (activeFiltersElement) {
-                if (this.selectedTags.size === 0) {
-                    activeFiltersElement.textContent = 'No filters active';
-                } else if (this.selectedTags.size === 1) {
-                    const tagList = Array.from(this.selectedTags).join(', ');
-                    activeFiltersElement.textContent = `Showing: ${tagList}`;
-                } else {
-                    const tagList = Array.from(this.selectedTags).join(' + ');
-                    activeFiltersElement.textContent = `Showing items with: ${tagList}`;
+                if (selectedCategories.length === 1) {
+                    const selectedPill = pills.find((pill) => pill.dataset.resourceCategory === selectedCategories[0]);
+                    url.pathname = new URL(selectedPill.href).pathname;
+                } else if (selectedCategories.length > 1) {
+                    url.searchParams.set('categories', selectedCategories.join(','));
                 }
+
+                window.history.pushState({ resourceCategories: selectedCategories }, '', url);
             }
-        }
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        const resourceGallery = document.getElementById('resource-gallery');
-        if (resourceGallery) {
-            new ResourceTagFilter();
-        }
-    });
+        };
+
+        pills.forEach((pill) => {
+            const category = pill.dataset.resourceCategory;
+
+            pill.addEventListener('click', (event) => {
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+
+                event.preventDefault();
+                const selectedCategories = getCategoriesFromLocation();
+                const nextCategories = category === 'all'
+                    ? []
+                    : selectedCategories.includes(category)
+                        ? selectedCategories.filter((selectedCategory) => selectedCategory !== category)
+                        : [...selectedCategories, category];
+
+                setCategories(nextCategories, { updateHistory: true });
+            });
+        });
+
+        window.addEventListener('popstate', () => setCategories(getCategoriesFromLocation()));
+        setCategories(getCategoriesFromLocation());
+    };
+
+    document.addEventListener('DOMContentLoaded', setupResourceFilters);
 })();

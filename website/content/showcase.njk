@@ -7,46 +7,82 @@ pagination:
 permalink: showcase/{{ (category | slugify) if category !== "all" }}/
 ---
 {% extends "layouts/base.layout.njk" %}
-{% from 'macros/create_category_filter.njk' import create_category_filter %}
 
 {% block content %}
-    <section class="container-xxl my-5">
-        <h1 id="monogame-showcase" class="fw-bold"><a href="#monogame-showcase">MonoGame Showcase</a></h1>
-        <p>
-            There have been 1000s of games, libraries, and tools made using MonoGame over the years.
-            We have gathered a taste of those titles here from the big hits to the small hidden gems.
-        </p>
-        <p>
-            If you are a developer and would like us to add your game, library, or tool to this list,
-            please submit a GitHub Issue using the <a href="https://github.com/MonoGame/monogame.github.io/issues/new?assignees=&labels=showcase&projects=&template=01_Showcase_Submission.yml">Showcase Submission template</a>
-        </p>
-    </section>
-
-    <section class="container-xxl my-5">
-        <div class="alert alert-light admonition">
-            <h4 class="alert-heading admonition-title"> Also check out the Community resources available</h4>
-            <p>If you are also looking for a wide selection of community resources available to use to build your games, check here:</p>
-            <h5><a href="/resources">MonoGame Community Resources</a></h5>
+    <section class="mg-showcase-hero" aria-labelledby="monogame-showcase">
+        <div class="container-xxl mg-showcase-hero-inner">
+            <div class="mg-showcase-hero-logos" aria-hidden="true"></div>
+            <div class="mg-showcase-hero-copy">
+                <nav class="mg-about-breadcrumb mg-showcase-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <span>Showcase</span>
+                </nav>
+                <h1 id="monogame-showcase">A universe of games, built with MonoGame.</h1>
+                <p class="mg-showcase-lede">
+                    Discover a selection of the games, libraries, and tools brought to life by the MonoGame community—from beloved classics to hidden gems.
+                </p>
+                <a class="btn btn-lg mg-outline-button mg-showcase-submit hide-external-icon"
+                   href="https://github.com/MonoGame/monogame.github.io/issues/new?assignees=&labels=showcase&projects=&template=01_Showcase_Submission.yml">
+                    <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                    <span>Submit your project</span>
+                </a>
+            </div>
         </div>
     </section>
 
-    {{ create_category_filter(collections.gameTags, "/showcase/", page.url) }}
+    <section class="container-xxl mg-showcase-filter" aria-labelledby="showcase-filter-title">
+        <div class="mg-showcase-filter-heading">
+            <div>
+                <p class="mg-showcase-eyebrow">Browse the collection</p>
+                <h2 id="showcase-filter-title">Find your next favourite</h2>
+            </div>
+        </div>
+        <nav class="mg-showcase-filter-list" aria-label="Showcase categories">
+            {% for filterCategory in collections.gameTags %}
+                {% set isActive = (filterCategory === "all" and page.url === "/showcase/") or filterCategory in page.url %}
+                <a href="/showcase/{{ (filterCategory | slugify) if filterCategory !== "all" }}"
+                   class="mg-showcase-filter-pill{{ " active" if isActive }}"
+                   data-showcase-category="{{ filterCategory }}"
+                   {% if isActive %}aria-current="page"{% endif %}>
+                    <span>{{ "All" if filterCategory === "all" else filterCategory }}</span>
+                    <span class="mg-showcase-filter-count" aria-label="projects"></span>
+                </a>
+            {% endfor %}
+        </nav>
+    </section>
 
-    <section class="container-xxl mb-5">
-        <div id="showcase-gallery" class="mg-item-grid">
+    <section class="container-xxl mb-5 mg-showcase-gallery-section" aria-labelledby="showcase-gallery-title">
+        <div class="mg-showcase-gallery-heading">
+            <h2 id="showcase-gallery-title">{{ "All projects" if category === "all" else category }}</h2>
+            <span id="showcase-gallery-count">{{ games | length }} projects and counting</span>
+        </div>
+        <div id="showcase-gallery" class="mg-showcase-grid">
             {% for game in games %}
-                {% if category in game.tags or category === "all" %}
-                    <a class="mg-no-link hide-external-icon showcase-item" href="{{ game.url }}" title="{{ game.title }}">
-                        <div class="mg-card mg-box-shadow d-flex flex-column">
-                            <div class="mg-card-thumbnail"
-                                 style="background-image: url('/images/showcase-header/{{ game.screenshot }}');
-                                        image-rendering: {{ "pixelated" if game.pixelart else "auto"}}">
-                            </div>
-                            <div class="mg-card-thumbnail-overlay"
-                                style="background-image: url('/images/showcase-header/{{ game.logo }}');"></div>
+                {% set isVisible = category in game.tags or category === "all" %}
+                <a class="mg-showcase-card mg-no-link hide-external-icon"
+                   href="{{ game.url }}"
+                   title="Visit {{ game.title }}"
+                   data-showcase-tags="{{ game.tags | join('|') }}"
+                   {% if not isVisible %}hidden{% endif %}>
+                    <div class="mg-showcase-card-media">
+                        <div class="mg-showcase-card-image"
+                             style="background-image: url('/images/showcase-header/{{ game.screenshot }}');
+                                    image-rendering: {{ "pixelated" if game.pixelart else "auto"}}">
                         </div>
-                    </a>
-                {% endif %}
+                        {% if game.logo %}
+                            <img class="mg-showcase-card-logo"
+                                 src="/images/showcase-header/{{ game.logo }}"
+                                 alt=""
+                                 loading="lazy"
+                                 decoding="async">
+                        {% endif %}
+                    </div>
+                    <div class="mg-showcase-card-body">
+                        <h3>{{ game.title }}</h3>
+                        <span>Explore <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     </section>

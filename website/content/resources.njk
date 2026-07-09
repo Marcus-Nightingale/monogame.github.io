@@ -7,74 +7,80 @@ pagination:
 permalink: resources/{{ (category | slugify) if category !== "all" }}/
 ---
 {% extends "layouts/base.layout.njk" %}
-{% from 'macros/create_category_filter.njk' import create_category_filter %}
 {% from 'macros/create_multi_tag_filter.njk' import create_multi_tag_filter %}
 
 {% block content %}
-    <section class="container-xxl my-5">
-        <h1 id="monogame-resource" class="fw-bold"><a href="#monogame-resource">MonoGame Resources</a></h1>
-        <p>
-            Here's a list of MonoGame resources that can help you on your journey.
-            If you have a resource you'd like to share, please <a href="mailto:biz@monogame.net?subject=New%20Resource&body=Hi,%20Please%20add%20this%20resource%20to%20your%20list:%0A%0ATitle:%20%0AAuthor:%20%0AResource%20URL:%20%0AImage%20URL:%20%0ATags:%20">
-                Email Us
-            </a>.
-        </p>
+    <section class="mg-resource-hero" aria-labelledby="monogame-resource">
+        <div class="container-xxl mg-resource-hero-inner">
+            <div class="mg-resource-hero-copy">
+                <nav class="mg-about-breadcrumb mg-resource-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <span>Resources</span>
+                </nav>
+                <h1 id="monogame-resource">Everything you need to keep building.</h1>
+                <p>
+                    Explore tools, learning material, libraries, and community projects that can help bring your next MonoGame project to life.
+                </p>
+                <a class="btn btn-lg mg-outline-button mg-resource-hero-cta hide-external-icon"
+                   href="mailto:biz@monogame.net?subject=New%20Resource&body=Hi,%20Please%20add%20this%20resource%20to%20your%20list:%0A%0ATitle:%20%0AAuthor:%20%0AResource%20URL:%20%0AImage%20URL:%20%0ATags:%20">
+                    <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                    <span>Share a resource</span>
+                </a>
+            </div>
+        </div>
     </section>
 
-    {% if category === "all" %}
-        {# Show multi-tag filter only on the main resources page #}
-        {{ create_multi_tag_filter(collections.resourceTags) }}
-    {% else %}
-        {# Show single-tag filter on category pages #}
-        {{ create_category_filter(collections.resourceTags, "/resources/", page.url) }}
-    {% endif %}
+    {{ create_multi_tag_filter(collections.resourceTags, "/resources/", page.url) }}
 
-    <section class="container-xxl mb-5">
-        <div id="resource-gallery" class="mg-item-grid mg-grid-2">
+    <section class="container-xxl mb-5" aria-labelledby="resource-gallery-title">
+        <div class="mg-resource-gallery-heading">
+            <h2 id="resource-gallery-title">{{ "All resources" if category === "all" else category }}</h2>
+            <span id="resource-gallery-count">{{ resources | length }} resources</span>
+        </div>
+        <div id="resource-gallery" class="mg-item-grid mg-resource-grid">
             {% for resource in resources %}
-                {% if category in resource.tags or category === "all" %}
-                    <a class="mg-no-link hide-external-icon" 
-                       href="{{ resource.url }}"
-                       data-tags="{{ resource.tags | join(',') | lower }}">
-                        <div class="mg-resource-container mg-box-shadow"
-                             style="background-image: url('{{ resource.cover }}');">
-                            <div class="transparent-overlay"></div>
-                            <div class="mg-resource-tags">
+                {% set isVisible = category in resource.tags or category === "all" %}
+                <a class="mg-no-link hide-external-icon"
+                   href="{{ resource.url }}"
+                   data-tags="{{ resource.tags | join(',') | lower }}"
+                   {% if not isVisible %}hidden{% endif %}>
+                    <div class="mg-resource-container mg-box-shadow"
+                         style="background-image: url('{{ resource.cover }}');">
+                        <div class="transparent-overlay"></div>
+                        <div class="mg-resource-tags">
+                            {% for tag in resource.tags %}
+                                {% if loop.index <= 3 %}
+                                    <div>{{ tag }}</div>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if resource.tags.length > 3 %}
+                                {% set additionalTags = '' %}
                                 {% for tag in resource.tags %}
-                                    {% if loop.index <= 3 %}
-                                        <div>{{ tag }}</div>
+                                    {% if loop.index0 >= 3 %}
+                                        {% set additionalTags = additionalTags + tag + '<br/>' %}
                                     {% endif %}
                                 {% endfor %}
+                                <div data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" data-bs-title="{{ additionalTags }}">
+                                    <div>+{{ resource.tags.length - 3 }}</div>
+                                </div>
+                            {% endif %}
 
-                                {% if resource.tags.length > 3 %}
-                                    {% set additionalTags = '' %}
-                                    {% for tag in resource.tags %}
-                                        {% if loop.index0 >= 3 %}
-                                            {% set additionalTags = additionalTags + tag + '<br/>' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    <div data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" data-bs-title="{{ additionalTags }}">
-                                        <div>+{{ resource.tags.length - 3 }}</div>
-                                    </div>
-                                {% endif %}
-
-                            </div>
-                            <div class="mg-resource-footer">
-                                <div class="mg-resource-title">{{ resource.title }}</div>
-                                <div class="mg-resource-author">by {{ resource.author }}</div>
-                            </div>
                         </div>
-                    </a>
-                {% endif %}
+                        <div class="mg-resource-footer">
+                            <div class="mg-resource-title">{{ resource.title }}</div>
+                            <div class="mg-resource-author">by {{ resource.author }}</div>
+                        </div>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     </section>
 {% endblock %}
 
 {% block scripts %}
-{% if category === "all" %}
 <script type="text/javascript" src="/js/multiTagFilter.js"></script>
-{% endif %}
 <script type="text/javascript">
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
