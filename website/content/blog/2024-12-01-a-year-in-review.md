@@ -4,8 +4,8 @@ date: "2024-12-01"
 excerpt: The MonoGame Foundation "Year in review", what the foundation has been up to since its incorporation.
 tags: [foundation]
 author:  MonoGame Foundation
-image: /images/blog/covers/board-meeting-minutes.png
-ogImage: /images/blog/covers/board-meeting-minutes.png
+image: /images/blog/covers/default.png
+ogImage: /images/blog/covers/default.png
 ---
 
 ## What a year it has been

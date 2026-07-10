@@ -76,9 +76,11 @@
                 pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
                 pill.toggleAttribute('aria-current', selectedCategories.length === 1 && isActive);
 
-                const candidateCategories = category === 'all' || selectedCategories.includes(category)
-                    ? selectedCategories
-                    : [...selectedCategories, category];
+                const candidateCategories = category === 'all'
+                    ? []
+                    : selectedCategories.includes(category)
+                        ? selectedCategories
+                        : [...selectedCategories, category];
                 const countLabel = pill.querySelector('.mg-showcase-filter-count');
 
                 if (countLabel) {

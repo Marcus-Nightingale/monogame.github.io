@@ -77,11 +77,31 @@ permalink: showcase/{{ (category | slugify) if category !== "all" }}/
                                  loading="lazy"
                                  decoding="async">
                         {% endif %}
-                    </div>
-                    <div class="mg-showcase-card-body">
-                        <h3>{{ game.title }}</h3>
-                        <span>Explore <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
-                    </div>
+                        </div>
+                        <div class="mg-showcase-card-body">
+                            <h3>{{ game.title }}</h3>
+                            <div class="mg-showcase-card-platforms" aria-label="Supported platforms">
+                                {% for tag in game.tags %}
+                                    {% if tag === "Windows" or tag === "Windows Phone" %}
+                                        <span title="{{ tag }}" aria-label="{{ tag }}">{% include 'svgs/logos/windows.svg' %}</span>
+                                    {% elif tag === "Mac" %}
+                                        <span title="macOS" aria-label="macOS">{% include 'svgs/logos/apple.svg' %}</span>
+                                    {% elif tag === "Linux" %}
+                                        <span title="Linux" aria-label="Linux">{% include 'svgs/logos/linux.svg' %}</span>
+                                    {% elif tag === "Android" %}
+                                        <span title="Android" aria-label="Android">{% include 'svgs/logos/android.svg' %}</span>
+                                    {% elif tag === "iOS" %}
+                                        <span title="iOS" aria-label="iOS">{% include 'svgs/logos/ios.svg' %}</span>
+                                    {% elif tag === "Xbox One" or tag === "Xbox Series X/S" %}
+                                        <span title="{{ tag }}" aria-label="{{ tag }}">{% include 'svgs/logos/xbox_one.svg' %}</span>
+                                    {% elif tag === "Playstation 4" or tag === "Playstation 5" or tag === "Playstation Vita" %}
+                                        <span title="{{ tag }}" aria-label="{{ tag }}">{% include 'svgs/logos/playstation.svg' %}</span>
+                                    {% elif tag === "Nintendo Switch" %}
+                                        <span title="Nintendo Switch" aria-label="Nintendo Switch">{% include 'svgs/logos/nintendo_switch.svg' %}</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
                 </a>
             {% endfor %}
         </div>

@@ -4,8 +4,8 @@ date: "2024-11-11"
 excerpt: Details about the educational release of Old School Adventure
 tags: [foundation, source, educational]
 author:  MonoGame Foundation
-image: /images/blog/covers/board-meeting-minutes.png
-ogImage: /images/blog/covers/board-meeting-minutes.png
+image: /images/blog/covers/release.png
+ogImage: /images/blog/covers/release.png
 ---
 
 ## MonoGame Foundation Releases Second Title With Full source!

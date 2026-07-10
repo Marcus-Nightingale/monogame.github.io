@@ -31,7 +31,7 @@
             pills.forEach((pill) => {
                 const category = pill.dataset.blogCategory;
                 const active = category === 'all' ? selected.length === 0 : selected.includes(category);
-                const candidate = category === 'all' || selected.includes(category) ? selected : [...selected, category];
+                const candidate = category === 'all' ? [] : selected.includes(category) ? selected : [...selected, category];
                 pill.classList.toggle('active', active);
                 pill.setAttribute('aria-pressed', active ? 'true' : 'false');
                 pill.toggleAttribute('aria-current', selected.length === 1 && active);

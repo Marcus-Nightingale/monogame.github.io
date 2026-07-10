@@ -2,10 +2,10 @@
 title: Non Profit Status
 date: "2024-10-22"
 excerpt: Official non profit status
-tags: website
+tags: [website]
 author: MonoGame Foundation
-image: /images/blog/covers/board-meeting-minutes.png
-ogImage: /images/blog/covers/board-meeting-minutes.png
+image: /images/blog/covers/default.png
+ogImage: /images/blog/covers/default.png
 ---
 
 ## Non Profit Status

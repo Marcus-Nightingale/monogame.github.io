@@ -2,10 +2,10 @@
 title: In memoriam for Bill Reiss
 date: "2024-08-11"
 excerpt: In recognition for his contribution to XNA and MonoGame, we would like to commemorate the passing of Bill Reiss in August, a long time supporter of XNA/MonoGame
-tags: website
+tags: [website]
 author: MonoGame Foundation
-image: /images/blog/covers/board-meeting-minutes.png
-ogImage: /images/blog/covers/board-meeting-minutes.png
+image: /images/blog/covers/default.png
+ogImage: /images/blog/covers/default.png
 ---
 
 ## A dear farewell to Bill Reiss

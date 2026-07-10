@@ -4,126 +4,62 @@ title: Community
 
 {% extends "layouts/base.layout.njk" %}
 {% block content %}
-    <section class="container-xxl my-5">
-        <h1 id="monogame-community" class="fw-bold">
-            <a href="#monogame-community">MonoGame Community</a>
-        </h1>
-        <p>
-            MonoGame has an active community across multiple social networks and channels.
-        </p>
+    <section class="mg-community-hero" aria-labelledby="monogame-community">
+        <div class="container-xxl mg-community-hero-inner">
+            <div class="mg-community-hero-copy">
+                <nav class="mg-about-breadcrumb mg-community-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <span>Community</span>
+                </nav>
+                <h1 id="monogame-community">Find your people. Make something great.</h1>
+                <p>Connect with MonoGame developers, share your work, get help when you need it, and help shape what comes next.</p>
+                <div class="mg-community-hero-actions">
+                    <a class="btn btn-lg mg-button hide-external-icon" href="https://discord.gg/monogame"><i class="bi bi-discord" aria-hidden="true"></i><span>Join Discord</span></a>
+                    <a class="btn btn-lg mg-outline-button mg-community-hero-secondary hide-external-icon" href="https://community.monogame.net"><i class="bi bi-chat-square-text" aria-hidden="true"></i><span>Visit the forums</span></a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="container-xxl mb-5">
-        <h2 id="communities" class="fw-bold">
-            Official Communities
-        </h2>
-        <div class="mg-item-grid">
-            <a href="https://community.monogame.net" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                          style="background-image: url('/images/community/forums_preview.png');
-                                 background-size: contain;
-                                 background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-body-text"></i> MonoGame Forums</h3>
-                        <p>
-                            Community forums where users can share their work, ask questions, and receive community support.
-                        <p>
-                    </div>
-                </div>
+    <section class="container-xxl mg-community-section" aria-labelledby="communities">
+        <div class="mg-community-section-heading">
+            <div>
+                <p class="mg-showcase-eyebrow">Join the conversation</p>
+                <h2 id="communities">Official communities</h2>
+            </div>
+        </div>
+        <div class="mg-community-grid">
+            <a href="https://community.monogame.net" class="mg-community-card hide-external-icon">
+                <div class="mg-community-card-media" style="background-image: url('/images/community/forums_preview.png');"></div>
+                <div class="mg-community-card-body"><i class="bi bi-chat-square-text" aria-hidden="true"></i><h3>MonoGame Forums</h3><p>Share your work, ask questions, and get thoughtful community support.</p><span>Visit the forums <svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z"></path></svg></span></div>
             </a>
-            <a href="https://github.com/MonoGame/MonoGame/discussions" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/community/github_discussion_preview.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-github"></i> GitHub Discussions</h3>
-                        <p>
-                            GitHub discussions where users can share their work, ask questions, and receive community support.
-                        <p>
-                    </div>
-                </div>
+            <a href="https://github.com/MonoGame/MonoGame/discussions" class="mg-community-card hide-external-icon">
+                <div class="mg-community-card-media" style="background-image: url('/images/community/github_discussion_preview.png');"></div>
+                <div class="mg-community-card-body"><i class="bi bi-github" aria-hidden="true"></i><h3>GitHub Discussions</h3><p>Discuss the framework, ideas, and the future of MonoGame in the open.</p><span>Join the discussion <svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z"></path></svg></span></div>
             </a>
-            <a href="https://discord.gg/monogame" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/community/discord_preview.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-discord"></i> Discord</h3>
-                    <p>
-                        Community discord is a great place for live discussion, sharing user created content, and community support.
-                    </p>
-                    </div>
-                </div>
+            <a href="https://discord.gg/monogame" class="mg-community-card hide-external-icon">
+                <div class="mg-community-card-media" style="background-image: url('/images/community/discord_preview.png');"></div>
+                <div class="mg-community-card-body"><i class="bi bi-discord" aria-hidden="true"></i><h3>Discord</h3><p>Jump into live discussion, share creations, and find community support.</p><span>Join Discord <svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z"></path></svg></span></div>
             </a>
-            <a href="https://www.reddit.com/r/monogame/" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/community/reddit_preview.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-reddit"></i> Reddit</h3>
-                        <p>
-                            MonoGame subreddit for discussion about the framework, sharing user created content, and community support.
-                        </p>
-                    </div>
-                </div>
+            <a href="https://www.reddit.com/r/monogame/" class="mg-community-card hide-external-icon">
+                <div class="mg-community-card-media" style="background-image: url('/images/community/reddit_preview.png');"></div>
+                <div class="mg-community-card-body"><i class="bi bi-reddit" aria-hidden="true"></i><h3>Reddit</h3><p>Follow community projects, discussion, and practical MonoGame advice.</p><span>Visit r/monogame <svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z"></path></svg></span></div>
             </a>
-            <a href="https://www.facebook.com/monogamecommunity" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/community/facebook_preview.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-facebook"></i> Facebook</h3>
-                        <p>
-                            Facebook community for discussion about MonoGame.
-                        </p>
-                    </div>
-                </div>
+            <a href="https://www.facebook.com/monogamecommunity" class="mg-community-card hide-external-icon">
+                <div class="mg-community-card-media" style="background-image: url('/images/community/facebook_preview.png');"></div>
+                <div class="mg-community-card-body"><i class="bi bi-facebook" aria-hidden="true"></i><h3>Facebook</h3><p>Join the Facebook community for conversation around MonoGame.</p><span>Find the group <svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z"></path></svg></span></div>
             </a>
         </div>
     </section>
 
-    <section class="container-xxl mb-5">
-        <h2 id="socialnetworks" class="fw-bold">
-            Official Social Networks
-        </h2>
-     <div class="mg-item-grid">
-            <a href="https://twitter.com/MonoGameTeam" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/community/twitter_preview.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-twitter"></i> Twitter</h3>
-                        <p>
-                            See recent news and shared posts from the community.
-                        <p>
-                    </div>
-                </div>
-            </a>
-            <a href="https://www.youtube.com/MonoGame" class="mg-no-link hide-external-icon">
-                <div class="mg-card mg-box-shadow d-flex flex-column">
-                    <div class="mg-card-thumbnail"
-                         style="background-image: url('/images/community/youtube_preview.png');
-                                background-size: contain;
-                                background-position: top;"></div>
-                    <div class="mg-card-body">
-                        <h3 class="mg-card-title"><i class="bi bi-youtube"></i> YouTube</h3>
-                    <p>
-                        Official YouTube channel with MonoGame videos and tutorials.
-                    </p>
-                    </div>
-                </div>
-            </a>
+    <section class="container-xxl mg-community-section" aria-labelledby="socialnetworks">
+        <div class="mg-community-section-heading">
+            <div><p class="mg-showcase-eyebrow">Keep up to date</p><h2 id="socialnetworks">Official social channels</h2></div>
+        </div>
+        <div class="mg-community-social-grid">
+            <a href="https://twitter.com/MonoGameTeam" class="mg-community-social-card hide-external-icon" style="background-image: url('/images/community/twitter_preview.png');"><i class="bi bi-twitter" aria-hidden="true"></i><div><h3>Twitter</h3><p>Recent news and shared posts from the community.</p></div><svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z"></path></svg></a>
+            <a href="https://www.youtube.com/MonoGame" class="mg-community-social-card hide-external-icon" style="background-image: url('/images/community/youtube_preview.png');"><i class="bi bi-youtube" aria-hidden="true"></i><div><h3>YouTube</h3><p>MonoGame videos, tutorials, and community highlights.</p></div><svg class="mg-home-open-source-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M15.1999 10.4899L13.2299 8.51993L10.0199 5.30993C9.33993 4.63993 8.17993 5.11993 8.17993 6.07993V12.3099V17.9199C8.17993 18.8799 9.33993 19.3599 10.0199 18.6799L15.1999 13.4999C16.0299 12.6799 16.0299 11.3199 15.1999 10.4899Z"></path></svg></a>
         </div>
     </section>
 {% endblock %}
