@@ -13,9 +13,6 @@ module.exports = function (config) {
         "node_modules/bootstrap-icons/font/fonts": "/fonts"
     });
     config.addPassthroughCopy({
-        "./website/content/public/fonts": "/fonts"
-    });
-    config.addPassthroughCopy({
         "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js": "/js/bootstrap.bundle.min.js"
     });
     config.addPassthroughCopy({ "./website/content/public/downloads/**/*": "/downloads"});
