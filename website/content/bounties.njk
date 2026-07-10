@@ -5,58 +5,84 @@ description: The MonoGame Foundation uses a bounty system to propose paid incent
 {% extends "layouts/base.layout.njk" %}
 
 {% block content %}
-    <section class="container-xxl my-5">
-        <h1 id="bounties" class="fw-bold"><a href="#bounties">Bounties</a></h1>
-        <p>
-            The <span class="fw-bold"><a href="/foundation/">MonoGame Foundation</a></span> is using a bounty system to propose paid
-			incentives to improve the project.
-        </p>
-		<p>
-            The list of all open bounties is available on <a href="https://github.com/MonoGame/MonoGame/issues/8120">the
-			project's GitHub repository</a>.
-        </p>
+    <section class="mg-bounties-hero" aria-labelledby="bounties">
+        <div class="container-xxl mg-bounties-hero-inner">
+            <div class="mg-bounties-hero-copy">
+                <nav class="mg-about-breadcrumb mg-bounties-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <span>Bounties</span>
+                </nav>
+                <h1 id="bounties">Help shape what MonoGame builds next.</h1>
+                <p>
+                    The <a href="/foundation/">MonoGame Foundation</a> offers paid bounties for work that moves the framework and its community forward.
+                </p>
+                <div class="mg-bounties-hero-actions">
+                    <a class="btn btn-lg mg-button mg-bounties-primary hide-external-icon" href="https://github.com/MonoGame/MonoGame/issues/8120">
+                        <i class="bi bi-github" aria-hidden="true"></i>
+                        <span>View open bounties</span>
+                    </a>
+                    <a class="btn btn-lg mg-outline-button mg-bounties-secondary hide-external-icon" href="mailto:biz@monogame.net">
+                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                        <span>Ask a question</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="container-xxl mb-5">
-        <h1 id="how" class="fw-bold"><a href="#how">How do bounties work?</a></h1>
-        <p>
-            If you would like to propose your services to fulfill a bounty, please send us your references and a proposed schedule to
-			complete the bounty by e-mail (please indicate which bounty you are applying to): <a href="mailto:biz@monogame.net">biz@monogame.net</a>
-        </p>
-		<p>
-            Each bounty will have a date for applications listed in its description. This will usually be about 2 weeks from the time the bounty is opened.
-            Once the date has been reached the bounty coordinator will review the applications. If there are no applicants, the bounty will remain open.
-            With input from the rest of the board members a successful applicant will be chosen. The bounty coordinator will then let you know of the decision.
-            The decision will also be made public on the specific bounty page. If the decision is favorable, a service agreement will
-            be proposed to you to legally bind both parties. You may also be required to sign a Non-Disclosure Agreement with the Foundation.
-        </p>
-		<p>
-			The Foundation board will consider your expertise and proposed schedule. Unless specified, only one application
-			per bounty will be selected and locked to complete the bounty. Past that point, bounties will be closed for applications.
-			Therefore, bounties are not competitions with multiple people racing to complete them. The board will look for the most
-			suitable application.
-		</p>
+    <section class="container-xxl mg-bounties-section" aria-labelledby="how">
+        <div class="mg-bounties-section-heading">
+            <div>
+                <p class="mg-bounties-eyebrow">A straightforward process</p>
+                <h2 id="how">How bounties work</h2>
+            </div>
+        </div>
+
+        <div class="mg-bounties-process-grid">
+            <a class="mg-bounties-process-card hide-external-icon" href="https://github.com/MonoGame/MonoGame/issues/8120">
+                <span>01</span>
+                <i class="bi bi-binoculars" aria-hidden="true"></i>
+                <h3>Find a bounty</h3>
+                <p>Review the open bounties, their scope, and the application deadline on GitHub.</p>
+                <span class="mg-bounties-process-link">Browse the board <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="mg-bounties-process-card hide-external-icon" href="mailto:biz@monogame.net?subject=Bounty%20application">
+                <span>02</span>
+                <i class="bi bi-send" aria-hidden="true"></i>
+                <h3>Send a proposal</h3>
+                <p>Email your references and a proposed schedule, noting the bounty you would like to complete.</p>
+                <span class="mg-bounties-process-link">Email your proposal <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="mg-bounties-process-card" href="#requirements">
+                <span>03</span>
+                <i class="bi bi-patch-check" aria-hidden="true"></i>
+                <h3>Work with the Foundation</h3>
+                <p>The coordinator reviews applications with the board and confirms the successful applicant publicly.</p>
+                <span class="mg-bounties-process-link">Review requirements <i class="bi bi-arrow-down" aria-hidden="true"></i></span>
+            </a>
+        </div>
+
+        <div class="mg-bounties-note">
+            <i class="bi bi-info-circle" aria-hidden="true"></i>
+            <p>Applications usually close around two weeks after a bounty opens. If no suitable application is received, the bounty remains open.</p>
+        </div>
     </section>
 
-	<section class="container-xxl mb-5">
-        <h1 id="requirements" class="fw-bold"><a href="#requirements">Requirements to apply for bounties</a></h1>
-        <p>
-            <span class="fw-bold">Before you apply for fulfilling a bounty, please note the following requirements:</span>
-        </p>
-		<ul>
-		  <li>For US citizens you must provide a <a href="https://www.irs.gov/forms-pubs/about-form-w-9">W-9</a> form along with your signed NDA (if required) when selected for a bounty.</li>
-          <li>For non-US citizens you need to provide the correct <a href="https://www.irs.gov/forms-pubs/about-form-w-8">W-8</a> form along with your signed NDA (if required) when selected for a bounty </li>
-		  <li>Your country of registration must not be under commercial embargo from the United States of America.</li>
-		  <li>Your bank account must not be from a bank that is under commercial embargo from the United States of America.</li>
-		  <li>
-		      Your bank account must be able to receive payments in $USD, or payments in
-			  <a href="https://wise.com/help/articles/2571942/what-countriesregions-can-i-send-to?id=2571942&slug=what-countries-can-i-send-to">
-			  any currency supported by Wise</a> (a Wise account isn't required).
-		  </li>
-		</ul>
-		<p>
-            We can unfortunately not consider applications that don't meet these requirements.
-        </p>
+    <section class="container-xxl mg-bounties-section" aria-labelledby="requirements">
+        <div class="mg-bounties-requirements">
+            <div class="mg-bounties-requirements-intro">
+                <p class="mg-bounties-eyebrow">Before you apply</p>
+                <h2 id="requirements">Requirements for bounty applicants</h2>
+                <p>We want applications to be fair, practical, and ready to move forward once a selection has been made.</p>
+            </div>
+            <ul class="mg-bounties-requirement-list">
+                <li><i class="bi bi-file-earmark-text" aria-hidden="true"></i><span>US citizens must provide a <a href="https://www.irs.gov/forms-pubs/about-form-w-9">W-9</a>; non-US citizens must provide the correct <a href="https://www.irs.gov/forms-pubs/about-form-w-8">W-8</a> when selected.</span></li>
+                <li><i class="bi bi-shield-check" aria-hidden="true"></i><span>Your country of registration and bank must not be subject to United States commercial embargoes.</span></li>
+                <li><i class="bi bi-currency-dollar" aria-hidden="true"></i><span>Your bank must receive USD, or a currency supported by <a href="https://wise.com/help/articles/2571942/what-countriesregions-can-i-send-to?id=2571942&slug=what-countries-can-i-send-to">Wise</a>.</span></li>
+                <li><i class="bi bi-file-earmark-lock" aria-hidden="true"></i><span>You may need to sign a service agreement and, where required, a Non-Disclosure Agreement.</span></li>
+            </ul>
+        </div>
+        <p class="mg-bounties-closing">Bounties are not competitions: unless stated otherwise, one applicant is selected based on their expertise and proposed schedule.</p>
     </section>
-
 {% endblock %}
